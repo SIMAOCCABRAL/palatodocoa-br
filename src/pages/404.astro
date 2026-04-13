@@ -1,0 +1,21 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+<Layout
+  title="Página não encontrada | Palato do Côa"
+  description="A página que procura não existe."
+  noindex={true}
+>
+  <section class="min-h-[70vh] flex flex-col items-center justify-center text-center px-6">
+    <p class="text-[var(--color-gold)] text-xs uppercase tracking-widest mb-4">Erro 404</p>
+    <h1 class="font-serif text-5xl mb-4">Página não encontrada</h1>
+    <div class="divider-gold mx-auto"></div>
+    <p class="text-[var(--color-muted)] mb-10 max-w-md">
+      A página que você está procurando não existe ou foi movida.
+    </p>
+    <div class="flex gap-4">
+      <a href="/" class="btn-secondary">Voltar ao início</a>
+      <a href="/beber" class="btn-primary">Ver vinhos</a>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#1a1a1a"/>
+  <rect x="0" y="0" width="1200" height="630" fill="#1a1a1a" opacity="0.9"/>
+  <text x="600" y="240" font-family="Georgia,serif" font-size="72" text-anchor="middle" fill="#fbfaf5">PALATO DO CÔA</text>
+  <text x="600" y="300" font-family="Georgia,serif" font-size="24" text-anchor="middle" fill="#9a7c4f">DOURO SUPERIOR · PORTUGAL</text>
+  <line x1="480" y1="330" x2="720" y2="330" stroke="#9a7c4f" stroke-width="2"/>
+  <text x="600" y="380" font-family="Georgia,serif" font-size="28" text-anchor="middle" fill="#fbfaf5">Bons amigos, bons vinhos, bons momentos</text>
+  <text x="600" y="440" font-family="Georgia,serif" font-size="20" text-anchor="middle" fill="#9a7c4f">palatodocoa.com.br</text>
+</svg>

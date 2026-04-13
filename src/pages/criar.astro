@@ -1,81 +1,71 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { schemaBreadcrumb } from "../lib/seo";
-
-const meta = {
-  essencia: {
-    subtitle: "Nossa Essência",
-    title: "Essência | Palato do Côa",
-    description: "Conheça a história, valores e família por trás do Palato do Côa — projeto vinícola familiar do Douro Superior desde 2002.",
-    h1: "A nossa essência",
-    intro: "Nascemos da paixão por vinhos com alma. Uma família do Douro Superior que decidiu traduzir a singularidade do seu terroir numa linguagem universal: o vinho.",
-    sections: [
-      { title: "Palato do Côa", text: "O nome é uma homenagem ao rio Côa, afluente do Douro que define a personalidade do nosso território. Uma escolha que marca a identidade inconfundível dos nossos vinhos." },
-      { title: "Valores", text: "Qualidade sem concessões, respeito pelo terroir e pela natureza, e uma visão de longo prazo que privilegia a excelência em cada garrafa." },
-      { title: "Família", text: "Um projeto de família. Pais, filhos e enólogos que partilham a mesma paixão e o mesmo compromisso com a excelência vitivinícola." },
-    ],
-  },
-  criar: {
-    subtitle: "Viticultura & Enologia",
-    title: "Criar | Palato do Côa",
-    description: "Conheça a Quinta, a viticultura e a enologia por trás dos vinhos Palato do Côa no Douro Superior.",
-    h1: "A arte de criar",
-    intro: "Do xisto ao copo — a criação de um vinho Palato do Côa é uma jornada de rigor, paciência e paixão pela terra do Douro Superior.",
-    sections: [
-      { title: "A Quinta", text: "Localizada no Douro Superior, a nossa quinta beneficia de condições únicas: amplitude térmica elevada, solos de xisto e exposição solar generosa que concentram sabor e personalidade nas uvas." },
-      { title: "Viticultura", text: "Agricultura cuidada, respeito pelos ciclos naturais e vindima maioritariamente manual. Cada cepa é tratada como um elemento único do ecossistema da quinta." },
-      { title: "Enologia", text: "Uma equipa de enólogos apaixonados que combina tradição e inovação, procurando sempre expressar o máximo potencial do terroir sem o subjugar." },
-    ],
-  },
-  desfrutar: {
-    subtitle: "Enoturismo",
-    title: "Enoturismo | Palato do Côa",
-    description: "Visite a Quinta Palato do Côa no Douro Superior. Experiências de enoturismo para grupos, restaurantes e parceiros brasileiros.",
-    h1: "Desfrutar o Douro",
-    intro: "A experiência Palato do Côa vai além do copo. Venha ao Douro Superior descobrir de onde vem a alma dos nossos vinhos.",
-    sections: [
-      { title: "Visita à Quinta", text: "Percorra as vinhas, conheça a adega e participe numa prova guiada. Uma experiência sensorial única no coração do Douro Superior." },
-      { title: "Para Parceiros Brasileiros", text: "Programas especiais para importadores, sommeliers e profissionais do setor de gastronomia e hospitalidade do Brasil." },
-      { title: "Reservas", text: "Visitas mediante marcação. Entre em contato para planear a sua visita e conhecer todas as opções disponíveis." },
-    ],
-  },
-}[Astro.url.pathname.replace("/", "")] || {};
-
-const slug = Astro.url.pathname.replace("/", "");
-const schema = schemaBreadcrumb([
-  { name: "Início", url: "/" },
-  { name: meta.h1 || slug, url: "/" + slug },
-]);
+const schema = schemaBreadcrumb([{ name: "Início", url: "/" }, { name: "Criar", url: "/criar" }]);
 ---
-
-<Layout title={meta.title} description={meta.description} schema={schema}>
+<Layout
+  title="Viticultura & Enologia | Palato do Côa"
+  description="Da videira ao copo — conheça a quinta, a viticultura e a enologia por trás dos vinhos Palato do Côa no Douro Superior."
+  schema={schema}
+>
   <section class="py-20 px-6 border-b border-[var(--color-border)] text-center">
-    <p class="section-subtitle">{meta.subtitle}</p>
-    <h1 class="section-title">{meta.h1}</h1>
+    <p class="section-subtitle">Da Vinha ao Copo</p>
+    <h1 class="section-title">A Arte de Criar</h1>
     <div class="divider-gold mx-auto"></div>
-    <p class="text-sm text-[var(--color-muted)] max-w-xl mx-auto">{meta.intro}</p>
+    <p class="text-sm text-[var(--color-muted)] max-w-xl mx-auto leading-relaxed">
+      Criar um vinho é um ato de paciência e de escuta. Escutar o terroir, as estações, a vinha.
+      No Douro Superior, aprendemos que a natureza já faz a maior parte do trabalho.
+    </p>
   </section>
 
-  <section class="py-16 px-6 max-w-5xl mx-auto space-y-16">
-    {meta.sections?.map((s: {title: string, text: string}) => (
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 border-b border-[var(--color-border)] pb-12">
-        <div>
-          <h2 class="font-serif text-2xl">{s.title}</h2>
-          <div class="divider-gold mt-4"></div>
+  <section class="py-16 px-6 max-w-5xl mx-auto space-y-20">
+    {[
+      {
+        subtitle: "O Lugar",
+        title: "A Quinta",
+        text1: "Localizada no Douro Superior, a nossa quinta estende-se por terraços de xisto que sobem da margem do Côa até às cumeadas. Aqui, a paisagem foi moldada por gerações de viticultores que souberam ler o terroir e adaptar-se a um dos ambientes mais exigentes de Portugal.",
+        text2: "A altitude varia entre 400 e 650 metros, o que cria diferenças de microclima que se refletem diretamente na personalidade dos vinhos de cada parcela.",
+        imgLabel: "Foto da quinta / terraços",
+        reverse: false,
+      },
+      {
+        subtitle: "No Campo",
+        title: "Viticultura",
+        text1: "Praticamos uma viticultura de intervenção mínima — deixamos a vinha expressar-se sem a forçar. As vindimas são feitas maioritariamente à mão, de madrugada, para preservar os aromas e a frescura das uvas.",
+        text2: "Trabalhamos com as grandes castas autóctones do Douro: Touriga Nacional, Touriga Franca, Tinta Roriz, Rabigato, Gouveio e Viosinho. Cada uma tem o seu terroir preferido dentro da quinta.",
+        imgLabel: "Foto das vinhas / vindima",
+        reverse: true,
+      },
+      {
+        subtitle: "Na Adega",
+        title: "Enologia",
+        text1: "Na adega, o nosso trabalho é preservar o que a natureza deu — e aperfeiçoar apenas o que é necessário. Fermentações longas, estágios em barricas de carvalho francês para as linhas de topo, e um processo de decisão que privilegia sempre a elegância sobre a potência bruta.",
+        text2: "O resultado são vinhos que refletem o ano, o terroir e a casta — não um estilo imposto. Vinhos honestos, com caráter e com a capacidade de envelhecer graciosamente.",
+        imgLabel: "Foto da adega / barricas",
+        reverse: false,
+      },
+    ].map((section) => (
+      <div class={`grid grid-cols-1 md:grid-cols-2 gap-12 items-center pb-16 border-b border-[var(--color-border)]`}>
+        <div class={section.reverse ? "order-1 md:order-2" : ""}>
+          <p class="section-subtitle">{section.subtitle}</p>
+          <h2 class="font-serif text-3xl mb-4">{section.title}</h2>
+          <div class="divider-gold"></div>
+          <p class="text-[var(--color-muted)] leading-relaxed mb-4">{section.text1}</p>
+          <p class="text-[var(--color-muted)] leading-relaxed">{section.text2}</p>
         </div>
-        <div class="md:col-span-2">
-          <p class="text-[var(--color-muted)] leading-relaxed">{s.text}</p>
+        <div class={`bg-[var(--color-border)] h-72 flex items-center justify-center ${section.reverse ? "order-2 md:order-1" : ""}`}>
+          <span class="text-xs uppercase tracking-widest text-[var(--color-muted)]">{section.imgLabel}</span>
         </div>
       </div>
     ))}
   </section>
 
-  <section class="py-16 px-6 text-center bg-white border-t border-[var(--color-border)]">
-    <h2 class="font-serif text-2xl mb-4">Quer saber mais?</h2>
-    <p class="text-sm text-[var(--color-muted)] mb-8">Entre em contato ou descubra os nossos vinhos.</p>
+  <section class="py-16 px-6 text-center">
+    <h2 class="font-serif text-3xl mb-4">Conheça os vinhos</h2>
+    <p class="text-sm text-[var(--color-muted)] mb-8 max-w-md mx-auto">O resultado de todo este processo está em cada garrafa.</p>
     <div class="flex gap-4 justify-center">
-      <a href="/contato" class="btn-secondary">Falar connosco</a>
-      <a href="/beber" class="btn-primary">Ver vinhos</a>
+      <a href="/beber" class="btn-secondary">Ver vinhos</a>
+      <a href="/contato" class="btn-primary">Solicitar orçamento</a>
     </div>
   </section>
 </Layout>
