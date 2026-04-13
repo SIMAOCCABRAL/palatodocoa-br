@@ -8,7 +8,8 @@ export const SITE = {
   country: "BR",
   language: "pt-BR",
   twitter: "@palatodocoa",
-  instagram: "@palatodocoa",
+  instagram: "@palatodocoa.brasil",
+  instagramUrl: "https://www.instagram.com/palatodocoa.brasil",
   defaultOgImage: "/images/og-default.jpg",
 };
 
@@ -48,6 +49,7 @@ export function schemaOrganization() {
     url: "https://www.palatodocoa.com.br",
     sameAs: [
       "https://www.palatodocoa.pt",
+      "https://www.instagram.com/palatodocoa.brasil",
       "https://www.instagram.com/palatodocoa",
       "https://www.facebook.com/palatodocoa",
     ],
