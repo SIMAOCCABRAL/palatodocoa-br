@@ -1,0 +1,58 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+import { schemaBreadcrumb } from "../../lib/seo";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+
+const schema = schemaBreadcrumb([
+  { name: "Início", url: "/" },
+  { name: "Blog", url: "/blog" },
+  { name: post.data.title, url: `/blog/${post.slug}` },
+]);
+---
+
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  image={post.data.image}
+  type="article"
+  schema={schema}
+>
+  <article class="max-w-3xl mx-auto px-6 py-16">
+    <nav class="text-xs uppercase tracking-widest text-[var(--color-muted)] mb-10">
+      <a href="/" class="hover:text-[var(--color-gold)]">Início</a>
+      <span class="mx-2">/</span>
+      <a href="/blog" class="hover:text-[var(--color-gold)]">Blog</a>
+      <span class="mx-2">/</span>
+      <span class="text-[var(--color-dark)]">{post.data.title}</span>
+    </nav>
+
+    <p class="section-subtitle">{post.data.category}</p>
+    <h1 class="font-serif text-4xl mb-4">{post.data.title}</h1>
+    <div class="divider-gold"></div>
+    <p class="text-xs text-[var(--color-muted)] mb-10">
+      {new Intl.DateTimeFormat("pt-BR", { dateStyle: "long" }).format(post.data.publishDate)}
+      · {post.data.author}
+      {post.data.ai_generated && <span class="ml-2 text-[var(--color-gold)]">· ✦ Gerado com IA</span>}
+    </p>
+
+    <div class="prose prose-stone max-w-none">
+      <Content />
+    </div>
+
+    <div class="mt-16 pt-8 border-t border-[var(--color-border)] flex gap-4">
+      <a href="/blog" class="btn-primary text-xs">← Voltar ao blog</a>
+      <a href="/contato" class="btn-secondary text-xs">Solicitar orçamento</a>
+    </div>
+  </article>
+</Layout>

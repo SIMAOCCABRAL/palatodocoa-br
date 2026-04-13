@@ -1,0 +1,86 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-[var(--color-dark)] text-white mt-24">
+  <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-4 gap-10">
+
+    <!-- Marca -->
+    <div class="md:col-span-2">
+      <p class="font-serif text-2xl tracking-widest mb-2">PALATO DO CÔA</p>
+      <p class="text-xs uppercase tracking-widest text-[var(--color-gold)] mb-4">Douro Superior, Portugal</p>
+      <p class="text-sm text-gray-400 leading-relaxed max-w-sm">
+        Vinhos com alma do Douro Superior. Tradição familiar, terroir único,
+        elegância em cada garrafa. Agora disponíveis para o mercado brasileiro.
+      </p>
+      <div class="flex gap-4 mt-6">
+        <a href="https://www.instagram.com/palatodocoa" target="_blank" rel="noopener" aria-label="Instagram"
+           class="text-gray-400 hover:text-[var(--color-gold)] transition-colors text-xs uppercase tracking-widest">
+          Instagram
+        </a>
+        <a href="https://www.facebook.com/palatodocoa" target="_blank" rel="noopener" aria-label="Facebook"
+           class="text-gray-400 hover:text-[var(--color-gold)] transition-colors text-xs uppercase tracking-widest">
+          Facebook
+        </a>
+      </div>
+    </div>
+
+    <!-- Navegação -->
+    <div>
+      <p class="text-xs uppercase tracking-widest text-[var(--color-gold)] mb-4">Navegação</p>
+      <ul class="space-y-2">
+        {[
+          ["Essência", "/essencia"],
+          ["Criar", "/criar"],
+          ["Vinhos", "/beber"],
+          ["Enoturismo", "/desfrutar"],
+          ["Blog", "/blog"],
+          ["Contato", "/contato"],
+        ].map(([label, href]) => (
+          <li>
+            <a href={href} class="text-sm text-gray-400 hover:text-white transition-colors">
+              {label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Contato -->
+    <div>
+      <p class="text-xs uppercase tracking-widest text-[var(--color-gold)] mb-4">Contato Brasil</p>
+      <ul class="space-y-3 text-sm text-gray-400">
+        <li>
+          <a href="mailto:brasil@palatodocoa.pt" class="hover:text-white transition-colors">
+            brasil@palatodocoa.pt
+          </a>
+        </li>
+        <li class="text-xs leading-relaxed">
+          Distribuição atacado<br />
+          Restaurantes &amp; importadoras<br />
+          Visitas à quinta
+        </li>
+      </ul>
+      <a href="/contato" class="btn-primary mt-6 block text-center text-xs">
+        Solicitar Orçamento
+      </a>
+    </div>
+
+  </div>
+
+  <!-- Bottom bar -->
+  <div class="border-t border-white/10 px-6 py-4 max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
+    <p class="text-xs text-gray-500">
+      © {year} Palato do Côa. Todos os direitos reservados.
+    </p>
+    <div class="flex gap-4">
+      <a href="https://www.palatodocoa.pt" target="_blank" rel="noopener"
+         class="text-xs text-gray-500 hover:text-gray-300 transition-colors">
+        Site Portugal →
+      </a>
+      <a href="/politica-privacidade" class="text-xs text-gray-500 hover:text-gray-300 transition-colors">
+        Privacidade
+      </a>
+    </div>
+  </div>
+</footer>

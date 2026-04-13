@@ -1,0 +1,63 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ContactForm from "../components/ui/ContactForm.astro";
+import { schemaBreadcrumb } from "../lib/seo";
+
+const schema = schemaBreadcrumb([
+  { name: "Início", url: "/" },
+  { name: "Contato", url: "/contato" },
+]);
+---
+
+<Layout
+  title="Contato | Palato do Côa Brasil"
+  description="Entre em contato com a Palato do Côa para compras atacado, distribuição, visitas à quinta e parcerias no Brasil."
+  schema={schema}
+>
+  <section class="py-20 px-6 border-b border-[var(--color-border)] text-center">
+    <p class="section-subtitle">Fale Connosco</p>
+    <h1 class="section-title">Contato Brasil</h1>
+    <div class="divider-gold mx-auto"></div>
+    <p class="text-sm text-[var(--color-muted)] max-w-xl mx-auto">
+      Atendemos restaurantes, importadoras, adegas e distribuidores em todo o Brasil.
+      Resposta em até 48 horas úteis.
+    </p>
+  </section>
+
+  <section class="py-16 px-6 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+    <!-- Sidebar info -->
+    <aside class="space-y-8">
+      {[
+        {
+          title: "Atacado",
+          text: "Volume mínimo e condições especiais para restaurantes, adegas e distribuidores.",
+        },
+        {
+          title: "Visita à Quinta",
+          text: "Experiências de enoturismo no Douro Superior. Grupos e parceiros comerciais.",
+        },
+        {
+          title: "Distribuição",
+          text: "Procuramos parceiros de distribuição em todo o território brasileiro.",
+        },
+      ].map((item) => (
+        <div class="border-l-2 border-[var(--color-gold)] pl-4">
+          <h3 class="font-serif text-lg mb-1">{item.title}</h3>
+          <p class="text-sm text-[var(--color-muted)] leading-relaxed">{item.text}</p>
+        </div>
+      ))}
+
+      <div class="border-t border-[var(--color-border)] pt-6">
+        <p class="text-xs uppercase tracking-widest text-[var(--color-gold)] mb-2">Email directo</p>
+        <a href="mailto:brasil@palatodocoa.pt" class="text-sm hover:text-[var(--color-gold)] transition-colors">
+          brasil@palatodocoa.pt
+        </a>
+      </div>
+    </aside>
+
+    <!-- Formulário -->
+    <div class="md:col-span-2">
+      <ContactForm />
+    </div>
+  </section>
+</Layout>

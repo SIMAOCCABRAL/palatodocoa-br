@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/* ── Variáveis de marca ── */
+:root {
+  --color-cream: #fbfaf5;
+  --color-gold: #9a7c4f;
+  --color-dark: #1a1a1a;
+  --color-muted: #6b6b6b;
+  --color-border: #e8e4dc;
+  --font-serif: "Goudy Old Style", "Georgia", serif;
+  --font-sans: "Montserrat", system-ui, sans-serif;
+}
+
+html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+body { background-color: var(--color-cream); color: var(--color-dark); font-family: var(--font-sans); }
+h1, h2, h3, h4 { font-family: var(--font-serif); letter-spacing: 0.01em; }
+
+@layer utilities {
+  .text-gold     { color: var(--color-gold); }
+  .bg-cream      { background-color: var(--color-cream); }
+  .border-brand  { border-color: var(--color-border); }
+  .font-serif    { font-family: var(--font-serif); }
+  .text-muted    { color: var(--color-muted); }
+  .animate-fade-in { animation: fadeIn 0.8s ease-in-out both; }
+  .animate-fade-in-delay { animation: fadeIn 0.8s 0.2s ease-in-out both; }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-block px-8 py-3 border border-[var(--color-gold)] text-[var(--color-gold)]
+           text-xs uppercase tracking-widest transition-all duration-300
+           hover:bg-[var(--color-gold)] hover:text-white;
+  }
+  .btn-secondary {
+    @apply inline-block px-8 py-3 bg-[var(--color-gold)] text-white
+           text-xs uppercase tracking-widest transition-all duration-300
+           hover:bg-[var(--color-dark)];
+  }
+  .section-title { @apply text-3xl md:text-4xl font-serif text-[var(--color-dark)] mb-4; }
+  .section-subtitle { @apply text-sm uppercase tracking-widest text-[var(--color-gold)] mb-3; }
+  .divider-gold { @apply w-12 h-px bg-[var(--color-gold)] my-6; }
+}

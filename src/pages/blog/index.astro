@@ -1,0 +1,50 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+import { schemaBreadcrumb } from "../../lib/seo";
+
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+posts.sort((a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime());
+
+const schema = schemaBreadcrumb([
+  { name: "Início", url: "/" },
+  { name: "Blog", url: "/blog" },
+]);
+---
+
+<Layout
+  title="Blog | Palato do Côa Brasil"
+  description="Artigos sobre vinhos portugueses, harmonização, enoturismo e o mercado de vinhos no Brasil."
+  schema={schema}
+>
+  <section class="py-20 px-6 border-b border-[var(--color-border)] text-center">
+    <p class="section-subtitle">Conhecimento & Cultura</p>
+    <h1 class="section-title">Blog</h1>
+    <div class="divider-gold mx-auto"></div>
+    <p class="text-sm text-[var(--color-muted)] max-w-md mx-auto">
+      Vinhos, harmonização, enoturismo e tudo sobre o universo Palato do Côa no Brasil.
+    </p>
+  </section>
+
+  <section class="py-16 px-6 max-w-5xl mx-auto">
+    {posts.length === 0 ? (
+      <p class="text-center text-[var(--color-muted)] py-20">Em breve — conteúdo editorial a caminho.</p>
+    ) : (
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {posts.map((post) => (
+          <a href={`/blog/${post.id}`} class="group border border-[var(--color-border)] p-6 hover:border-[var(--color-gold)] transition-all">
+            {post.data.image && (
+              <img src={post.data.image} alt={post.data.title} class="w-full h-48 object-cover mb-4" loading="lazy" />
+            )}
+            <p class="text-xs uppercase tracking-widest text-[var(--color-gold)] mb-2">{post.data.category}</p>
+            <h2 class="font-serif text-xl group-hover:text-[var(--color-gold)] transition-colors mb-2">{post.data.title}</h2>
+            <p class="text-sm text-[var(--color-muted)] line-clamp-3">{post.data.description}</p>
+            <p class="text-xs text-[var(--color-muted)] mt-4">
+              {new Intl.DateTimeFormat("pt-BR", { dateStyle: "long" }).format(post.data.publishDate)}
+            </p>
+          </a>
+        ))}
+      </div>
+    )}
+  </section>
+</Layout>

@@ -1,17 +1,131 @@
 ---
+import Layout from "../layouts/Layout.astro";
+import { schemaOrganization } from "../lib/seo";
+import { getCollection } from "astro:content";
 
+const featuredWines = await getCollection("wines", ({ data }) => data.featured);
+
+const schema = schemaOrganization();
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout
+  title="Palato do Côa | Vinhos do Douro Superior para o Brasil"
+  description="Vinhos premium do Douro Superior, Portugal, para o mercado brasileiro. Atacado, restaurantes e importadoras. Bons amigos, bons vinhos, bons momentos."
+  schema={schema}
+>
+
+  <!-- ── HERO ── -->
+  <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[var(--color-dark)]">
+    <!-- Background image placeholder — trocar por foto real -->
+    <div class="absolute inset-0 bg-[url('/images/hero-quinta.jpg')] bg-cover bg-center opacity-40"></div>
+
+    <div class="relative z-10 text-center text-white px-6 max-w-3xl mx-auto animate-fade-in">
+      <p class="text-xs uppercase tracking-[0.4em] text-[var(--color-gold)] mb-6">
+        Douro Superior · Portugal
+      </p>
+      <h1 class="font-serif text-5xl md:text-7xl leading-tight mb-6">
+        Bons amigos,<br />bons vinhos,<br />bons momentos
+      </h1>
+      <div class="divider-gold mx-auto"></div>
+      <p class="text-base md:text-lg text-gray-300 leading-relaxed mb-10 max-w-xl mx-auto">
+        A elegância do Douro Superior chega ao Brasil. Vinhos com alma,
+        terroir único e tradição familiar desde 2002.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/beber" class="btn-secondary">Descubra os vinhos</a>
+        <a href="/contato" class="btn-primary border-white text-white hover:bg-white hover:text-[var(--color-dark)]">
+          Solicitar orçamento
+        </a>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 animate-bounce">
+      <span class="text-[10px] uppercase tracking-widest">Explorar</span>
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- ── PROPOSTA DE VALOR ── -->
+  <section class="py-24 px-6 max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <p class="section-subtitle">Por que Palato do Côa</p>
+      <h2 class="section-title">Terroir único.<br />Elegância em cada garrafa.</h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {[
+        {
+          icon: "🌿",
+          title: "Douro Superior",
+          text: "Vinhedo no coração do Douro Superior, berço dos grandes vinhos portugueses. Altitude, xisto e sol intenso criam vinhos de caráter inigualável.",
+        },
+        {
+          icon: "👨‍👩‍👧‍👦",
+          title: "Família & Tradição",
+          text: "Projeto familiar fundado em 2002. Cada garrafa carrega o cuidado e a paixão de uma família dedicada integralmente à viticultura de excelência.",
+        },
+        {
+          icon: "🏆",
+          title: "Reconhecimento Internacional",
+          text: "Vinhos premiados em concursos internacionais. Presença nos melhores restaurantes de Portugal e agora disponíveis para o mercado brasileiro.",
+        },
+      ].map((item) => (
+        <div class="text-center p-8 border border-[var(--color-border)] hover:border-[var(--color-gold)] transition-colors">
+          <div class="text-4xl mb-4">{item.icon}</div>
+          <h3 class="font-serif text-xl mb-3">{item.title}</h3>
+          <p class="text-sm text-[var(--color-muted)] leading-relaxed">{item.text}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ── VINHOS DESTAQUE ── -->
+  {featuredWines.length > 0 && (
+    <section class="py-24 bg-white px-6">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-16">
+          <p class="section-subtitle">Selecção Premium</p>
+          <h2 class="section-title">Vinhos em destaque</h2>
+          <div class="divider-gold mx-auto"></div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {featuredWines.slice(0, 3).map((wine) => (
+            <a href={`/beber/${wine.id}`} class="group border border-[var(--color-border)] p-6 hover:border-[var(--color-gold)] transition-all">
+              <p class="text-xs uppercase tracking-widest text-[var(--color-gold)] mb-2">{wine.data.type}</p>
+              <h3 class="font-serif text-xl group-hover:text-[var(--color-gold)] transition-colors mb-2">{wine.data.title}</h3>
+              <p class="text-sm text-[var(--color-muted)] line-clamp-3">{wine.data.description}</p>
+              <p class="text-xs uppercase tracking-widest mt-4 group-hover:text-[var(--color-gold)] transition-colors">Ver detalhes →</p>
+            </a>
+          ))}
+        </div>
+        <div class="text-center mt-10">
+          <a href="/beber" class="btn-primary">Ver todos os vinhos</a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- ── BRASIL CTA ── -->
+  <section class="py-24 px-6 bg-[var(--color-dark)] text-white">
+    <div class="max-w-3xl mx-auto text-center">
+      <p class="section-subtitle text-[var(--color-gold)]">Mercado Brasileiro</p>
+      <h2 class="font-serif text-4xl md:text-5xl mb-6">Pronto para levar<br />Portugal à sua mesa?</h2>
+      <div class="divider-gold mx-auto"></div>
+      <p class="text-gray-300 leading-relaxed mb-10">
+        Atendemos restaurantes, importadoras, adegas e distribuidores em todo o Brasil.
+        Entre em contato para condições especiais de atacado e visitas à quinta.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/contato" class="btn-secondary">Solicitar orçamento</a>
+        <a href="/desfrutar" class="btn-primary border-white text-white hover:bg-white hover:text-[var(--color-dark)]">
+          Visitar a quinta
+        </a>
+      </div>
+    </div>
+  </section>
+
+</Layout>

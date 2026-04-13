@@ -1,0 +1,199 @@
+---
+// Formulário B2B — Atacado / Visita à Quinta
+// Integração: Netlify Forms (grátis, sem backend)
+// Para trocar para outro provider: apenas muda o action e os atributos data-*
+---
+
+<form
+  name="contato-b2b"
+  method="POST"
+  data-netlify="true"
+  netlify-honeypot="bot-field"
+  class="space-y-6"
+  id="contact-form"
+>
+  <!-- Honeypot anti-spam -->
+  <input type="hidden" name="form-name" value="contato-b2b" />
+  <p class="hidden"><input name="bot-field" /></p>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <!-- Nome -->
+    <div>
+      <label for="nome" class="block text-xs uppercase tracking-widest text-[var(--color-dark)] mb-2">
+        Nome *
+      </label>
+      <input
+        type="text"
+        id="nome"
+        name="nome"
+        required
+        class="w-full border border-[var(--color-border)] bg-white px-4 py-3 text-sm
+               focus:outline-none focus:border-[var(--color-gold)] transition-colors"
+        placeholder="Seu nome completo"
+      />
+    </div>
+
+    <!-- Empresa -->
+    <div>
+      <label for="empresa" class="block text-xs uppercase tracking-widest text-[var(--color-dark)] mb-2">
+        Empresa *
+      </label>
+      <input
+        type="text"
+        id="empresa"
+        name="empresa"
+        required
+        class="w-full border border-[var(--color-border)] bg-white px-4 py-3 text-sm
+               focus:outline-none focus:border-[var(--color-gold)] transition-colors"
+        placeholder="Nome da empresa"
+      />
+    </div>
+
+    <!-- Email -->
+    <div>
+      <label for="email" class="block text-xs uppercase tracking-widest text-[var(--color-dark)] mb-2">
+        E-mail *
+      </label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        class="w-full border border-[var(--color-border)] bg-white px-4 py-3 text-sm
+               focus:outline-none focus:border-[var(--color-gold)] transition-colors"
+        placeholder="seu@email.com"
+      />
+    </div>
+
+    <!-- Telefone / WhatsApp -->
+    <div>
+      <label for="telefone" class="block text-xs uppercase tracking-widest text-[var(--color-dark)] mb-2">
+        WhatsApp
+      </label>
+      <input
+        type="tel"
+        id="telefone"
+        name="telefone"
+        class="w-full border border-[var(--color-border)] bg-white px-4 py-3 text-sm
+               focus:outline-none focus:border-[var(--color-gold)] transition-colors"
+        placeholder="+55 (11) 99999-9999"
+      />
+    </div>
+  </div>
+
+  <!-- Tipo de interesse -->
+  <div>
+    <label class="block text-xs uppercase tracking-widest text-[var(--color-dark)] mb-3">
+      Interesse *
+    </label>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+      {[
+        ["atacado", "Compra Atacado"],
+        ["visita", "Visita à Quinta"],
+        ["parceria", "Parceria / Distribuição"],
+      ].map(([value, label]) => (
+        <label class="flex items-center gap-3 border border-[var(--color-border)] px-4 py-3 cursor-pointer
+                       hover:border-[var(--color-gold)] transition-colors group has-[:checked]:border-[var(--color-gold)]">
+          <input
+            type="radio"
+            name="interesse"
+            value={value}
+            class="accent-[var(--color-gold)]"
+          />
+          <span class="text-sm text-[var(--color-dark)]">{label}</span>
+        </label>
+      ))}
+    </div>
+  </div>
+
+  <!-- Estado -->
+  <div>
+    <label for="estado" class="block text-xs uppercase tracking-widest text-[var(--color-dark)] mb-2">
+      Estado
+    </label>
+    <select
+      id="estado"
+      name="estado"
+      class="w-full border border-[var(--color-border)] bg-white px-4 py-3 text-sm
+             focus:outline-none focus:border-[var(--color-gold)] transition-colors"
+    >
+      <option value="">Selecione seu estado</option>
+      {["AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT","PA","PB","PE",
+         "PI","PR","RJ","RN","RO","RR","RS","SC","SE","SP","TO"].map((uf) => (
+        <option value={uf}>{uf}</option>
+      ))}
+    </select>
+  </div>
+
+  <!-- Mensagem -->
+  <div>
+    <label for="mensagem" class="block text-xs uppercase tracking-widest text-[var(--color-dark)] mb-2">
+      Mensagem
+    </label>
+    <textarea
+      id="mensagem"
+      name="mensagem"
+      rows={5}
+      class="w-full border border-[var(--color-border)] bg-white px-4 py-3 text-sm
+             focus:outline-none focus:border-[var(--color-gold)] transition-colors resize-none"
+      placeholder="Conte-nos mais sobre o seu interesse, volume estimado, tipo de negócio..."
+    ></textarea>
+  </div>
+
+  <!-- LGPD -->
+  <label class="flex items-start gap-3 cursor-pointer">
+    <input type="checkbox" name="lgpd" required class="mt-1 accent-[var(--color-gold)]" />
+    <span class="text-xs text-[var(--color-muted)] leading-relaxed">
+      Concordo com a <a href="/politica-privacidade" class="underline hover:text-[var(--color-gold)]">
+      Política de Privacidade</a> e autorizo o contato comercial. Em conformidade com a LGPD (Lei nº 13.709/2018).
+    </span>
+  </label>
+
+  <!-- Submit -->
+  <button type="submit" class="btn-secondary w-full md:w-auto px-12 py-4 text-sm">
+    Enviar Solicitação
+  </button>
+
+  <!-- Feedback -->
+  <div id="form-success" class="hidden p-4 bg-green-50 border border-green-200 text-green-800 text-sm">
+    ✓ Mensagem enviada com sucesso! Entraremos em contato em até 48 horas.
+  </div>
+  <div id="form-error" class="hidden p-4 bg-red-50 border border-red-200 text-red-800 text-sm">
+    Ocorreu um erro. Por favor, tente novamente ou envie para brasil@palatodocoa.pt
+  </div>
+</form>
+
+<script>
+  import { trackEvent, EVENTS } from "../../lib/analytics";
+
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const success = document.getElementById("form-success");
+  const error = document.getElementById("form-error");
+
+  form?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch("/", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams(data as any).toString(),
+      });
+
+      if (res.ok) {
+        success?.classList.remove("hidden");
+        form.reset();
+        // Track conversão
+        trackEvent(EVENTS.CONTACT_FORM_SUBMIT, {
+          interesse: data.get("interesse"),
+          estado: data.get("estado"),
+        });
+      } else {
+        error?.classList.remove("hidden");
+      }
+    } catch {
+      error?.classList.remove("hidden");
+    }
+  });
+</script>

@@ -1,0 +1,121 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+import { schemaWine, schemaBreadcrumb, SITE } from "../../lib/seo";
+
+export async function getStaticPaths() {
+  const wines = await getCollection("wines");
+  return wines.map((wine) => ({
+    params: { slug: wine.id },
+    props: { wine },
+  }));
+}
+
+const { wine } = Astro.props;
+const { Content } = await render(wine);
+
+const schemas = [
+  schemaWine({
+    title: wine.data.title,
+    description: wine.data.description,
+    type: wine.data.type,
+    region: wine.data.region,
+    grapes: wine.data.grapes,
+    url: `${SITE.url}/beber/${wine.id}`,
+    image: wine.data.image,
+  }),
+  schemaBreadcrumb([
+    { name: "Início", url: "/" },
+    { name: "Vinhos", url: "/beber" },
+    { name: wine.data.title, url: `/beber/${wine.id}` },
+  ]),
+];
+---
+
+<Layout
+  title={wine.data.seo_title || wine.data.title}
+  description={wine.data.seo_description || wine.data.description}
+  image={wine.data.image}
+  type="product"
+  schema={schemas}
+>
+  <article class="max-w-5xl mx-auto px-6 py-16">
+    <nav class="text-xs uppercase tracking-widest text-[var(--color-muted)] mb-10">
+      <a href="/" class="hover:text-[var(--color-gold)]">Início</a>
+      <span class="mx-2">/</span>
+      <a href="/beber" class="hover:text-[var(--color-gold)]">Vinhos</a>
+      <span class="mx-2">/</span>
+      <span class="text-[var(--color-dark)]">{wine.data.title}</span>
+    </nav>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+      <div class="bg-white border border-[var(--color-border)] flex items-center justify-center min-h-96 p-8">
+        {wine.data.image ? (
+          <img src={wine.data.image} alt={wine.data.title} class="max-h-96 object-contain" />
+        ) : (
+          <div class="text-[var(--color-border)] text-center">
+            <svg class="w-20 h-20 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 3v7.5a3 3 0 006 0V3M6 3h12M8 21h8M12 13v8" />
+            </svg>
+            <p class="text-xs uppercase tracking-widest">Imagem em breve</p>
+          </div>
+        )}
+      </div>
+
+      <div>
+        <p class="section-subtitle">{wine.data.type} · {wine.data.region}</p>
+        <h1 class="font-serif text-4xl mb-2">{wine.data.title}</h1>
+        {wine.data.subtitle && <p class="text-[var(--color-gold)] text-sm uppercase tracking-widest mb-4">{wine.data.subtitle}</p>}
+        <div class="divider-gold"></div>
+        <p class="text-[var(--color-muted)] leading-relaxed mb-6">{wine.data.description}</p>
+
+        <div class="border-t border-[var(--color-border)] pt-6 space-y-3">
+          {wine.data.year && (
+            <div class="flex justify-between text-sm">
+              <span class="uppercase tracking-widest text-xs text-[var(--color-muted)]">Colheita</span>
+              <span class="font-medium">{wine.data.year}</span>
+            </div>
+          )}
+          {wine.data.alcohol && (
+            <div class="flex justify-between text-sm border-t border-[var(--color-border)] pt-3">
+              <span class="uppercase tracking-widest text-xs text-[var(--color-muted)]">Álcool</span>
+              <span class="font-medium">{wine.data.alcohol}</span>
+            </div>
+          )}
+          {wine.data.grapes.length > 0 && (
+            <div class="flex justify-between text-sm border-t border-[var(--color-border)] pt-3">
+              <span class="uppercase tracking-widest text-xs text-[var(--color-muted)]">Castas</span>
+              <span class="font-medium text-right">{wine.data.grapes.join(", ")}</span>
+            </div>
+          )}
+          {wine.data.pairing.length > 0 && (
+            <div class="flex justify-between text-sm border-t border-[var(--color-border)] pt-3">
+              <span class="uppercase tracking-widest text-xs text-[var(--color-muted)]">Harmonização</span>
+              <span class="font-medium text-right max-w-48">{wine.data.pairing.join(", ")}</span>
+            </div>
+          )}
+        </div>
+
+        <a href="/contato?interesse=atacado" class="btn-secondary mt-8 block text-center">
+          Solicitar este vinho
+        </a>
+      </div>
+    </div>
+
+    {wine.data.tasting_notes && (
+      <div class="mt-16 border-t border-[var(--color-border)] pt-12">
+        <h2 class="font-serif text-2xl mb-4">Notas de Prova</h2>
+        <p class="text-[var(--color-muted)] leading-relaxed max-w-2xl">{wine.data.tasting_notes}</p>
+      </div>
+    )}
+
+    <div class="mt-12 prose prose-stone max-w-2xl">
+      <Content />
+    </div>
+  </article>
+</Layout>
+
+<script>
+  import { trackEvent, EVENTS } from "../../lib/analytics";
+  trackEvent(EVENTS.WINE_PAGE_VIEW, { wine: document.title });
+</script>

@@ -1,0 +1,101 @@
+---
+const NAV = [
+  { label: "Essência",  href: "/essencia" },
+  { label: "Criar",     href: "/criar" },
+  { label: "Vinhos",    href: "/beber" },
+  { label: "Enoturismo",href: "/desfrutar" },
+  { label: "Contato",   href: "/contato" },
+];
+
+const current = Astro.url.pathname;
+---
+
+<header
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+  id="site-header"
+>
+  <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex flex-col items-start group">
+      <span class="font-serif text-xl tracking-widest text-[var(--color-dark)] group-hover:text-gold transition-colors">
+        PALATO DO CÔA
+      </span>
+      <span class="text-[10px] uppercase tracking-[0.3em] text-[var(--color-gold)] mt-0.5">
+        Brasil
+      </span>
+    </a>
+
+    <!-- Nav Desktop -->
+    <nav class="hidden md:flex items-center gap-8">
+      {NAV.map((item) => (
+        <a
+          href={item.href}
+          class:list={[
+            "text-xs uppercase tracking-widest transition-colors duration-200",
+            current.startsWith(item.href)
+              ? "text-[var(--color-gold)]"
+              : "text-[var(--color-dark)] hover:text-[var(--color-gold)]",
+          ]}
+        >
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <!-- CTA -->
+    <a href="/contato" class="hidden md:block btn-primary text-xs">
+      Solicitar Orçamento
+    </a>
+
+    <!-- Mobile menu toggle -->
+    <button
+      class="md:hidden flex flex-col gap-1.5 p-2"
+      id="mobile-toggle"
+      aria-label="Menu"
+    >
+      <span class="w-6 h-px bg-[var(--color-dark)] block transition-all" id="bar1"></span>
+      <span class="w-6 h-px bg-[var(--color-dark)] block transition-all" id="bar2"></span>
+      <span class="w-4 h-px bg-[var(--color-dark)] block transition-all" id="bar3"></span>
+    </button>
+  </div>
+
+  <!-- Mobile menu -->
+  <div
+    class="hidden md:hidden bg-[var(--color-cream)] border-t border-[var(--color-border)] px-6 pb-6"
+    id="mobile-menu"
+  >
+    {NAV.map((item) => (
+      <a
+        href={item.href}
+        class="block py-3 text-sm uppercase tracking-widest border-b border-[var(--color-border)] text-[var(--color-dark)] hover:text-[var(--color-gold)] transition-colors"
+      >
+        {item.label}
+      </a>
+    ))}
+    <a href="/contato" class="btn-secondary mt-6 text-center block">
+      Solicitar Orçamento
+    </a>
+  </div>
+</header>
+
+<!-- Spacer para o fixed header -->
+<div class="h-20"></div>
+
+<script>
+  // Header scroll effect
+  const header = document.getElementById("site-header");
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 40) {
+      header?.classList.add("bg-[#fbfaf5]/95", "backdrop-blur-sm", "shadow-sm");
+    } else {
+      header?.classList.remove("bg-[#fbfaf5]/95", "backdrop-blur-sm", "shadow-sm");
+    }
+  });
+
+  // Mobile menu
+  const toggle = document.getElementById("mobile-toggle");
+  const menu = document.getElementById("mobile-menu");
+  toggle?.addEventListener("click", () => {
+    menu?.classList.toggle("hidden");
+  });
+</script>
