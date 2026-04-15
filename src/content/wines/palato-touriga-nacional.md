@@ -5,7 +5,7 @@ order: 7
 type: "tinto"
 region: "Douro Superior"
 grapes: ["Touriga Nacional"]
-description: "Monovarietal de Touriga Nacional, a rainha das castas portuguesas. Expressão pura do terroir de Muxagata — intensidade, floral e capacidade de envelhecimento excecional."
+description: "Expressão pura e sem concessões da Touriga Nacional — a casta mais nobre de Portugal — nascida no xisto de Muxagata. Violeta, amora e mirtilo no aroma, com notas de cachimbo e fumo que revelam a alma do terroir. Boca poderosa mas refinada, taninos firmes e um final que persiste minutos. Potencial de guarda de 10 a 15 anos. Para cartas de vinhos que querem surpreender."
 tasting_notes: "Cor rubi-violáceo intenso. Bouquet complexo de violeta, amora, mirtilo e notas de cachimbo. Boca poderosa mas elegante, taninos firmes e final extraordinariamente longo."
 pairing: ["Carne de caça assada", "Costela de boi maturada", "Chocolate negro", "Queijo da Serra"]
 featured: true

@@ -5,7 +5,7 @@ order: 1
 type: "branco"
 region: "Douro Superior"
 grapes: ["Rabigato", "Gouveio", "Viosinho"]
-description: "Branco vibrante com boa estrutura e toque mineral do xisto. Notas cítricas, florais e final fresco e elegante."
+description: "Branco vibrante, com aromas de citrinos frescos, pêssego branco e notas florais delicadas. O xisto do Vale do Côa imprime uma mineralidade precisa que traz frescura e comprimento de boca raros nesta categoria de preço. Harmoniza na perfeição com moqueca leve, frutos do mar e risotos cremosos."
 tasting_notes: "Cor amarelo-palha brilhante com reflexos esverdeados. Aroma fresco de citrinos, pêssego branco e notas florais. Boca fresca, com boa acidez e final mineral característico do xisto duriense."
 pairing: ["Moqueca leve", "Frutos do mar", "Queijos brancos", "Risotos"]
 image: "/images/vinhos/palato-branco.png"

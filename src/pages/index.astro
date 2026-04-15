@@ -4,13 +4,14 @@ import { schemaOrganization, SITE } from "../lib/seo";
 import { getCollection } from "astro:content";
 
 const featuredWines = await getCollection("wines", ({ data }) => data.featured);
+const sort = (arr: typeof featuredWines) => arr.sort((a, b) => a.data.order - b.data.order);
 const schema = schemaOrganization();
 ---
 
 <Layout
-  title="Palato do Côa | Vinhos Douro Superior para Restaurantes e Importadoras"
-  description="Vinhos premium do Douro Superior disponíveis no Brasil em atacado. Condições especiais para restaurantes, importadoras, distribuidores e adegas. Diferencie sua carta de vinhos."
-  keywords={`${SITE.keywords.b2b}, ${SITE.keywords.b2c}, ${SITE.keywords.brand}`}
+  title="Palato do Côa | Vinhos do Douro Superior com excelente custo-benefício para restaurantes e importadoras no Brasil"
+  description="Vinhos autênticos do Douro Superior disponíveis para atacado no Brasil. Condições especiais para restaurantes, importadoras e adegas. Mineralidade, elegância e história em cada garrafa."
+  keywords={`vinho português, vinho Douro, vinho Douro Superior atacado, vinho para carta de vinhos, vinho mineral Douro, ${SITE.keywords.b2b}, ${SITE.keywords.b2c}, ${SITE.keywords.brand}`}
   schema={schema}
 >
 
@@ -18,10 +19,10 @@ const schema = schemaOrganization();
   <section class="relative min-h-[90vh] flex items-center justify-center" style="background-image:linear-gradient(rgba(10,10,10,0.65),rgba(10,10,10,0.65)),url('https://palatodocoa.pt/wp-content/uploads/2019/12/027_20190920-01-JNM-Muxagata-VilaNovaDeFozCoa-FULL.jpg');background-size:cover;background-position:center;background-color:#1a1a1a;">
     <div class="relative z-10 text-center text-white px-6 max-w-3xl mx-auto animate-fade-in">
       <p class="text-xs uppercase tracking-[0.4em] text-[var(--color-gold)] mb-6">
-        Douro Superior · Portugal
+        Vale do Côa · Douro Superior · Portugal
       </p>
       <h1 class="font-serif text-5xl md:text-7xl leading-tight mb-8">
-        Palato do Côa – Douro Superior
+        Palato do Côa
       </h1>
       <p class="text-base md:text-lg text-gray-300 leading-relaxed mb-4 max-w-2xl mx-auto">
         Nascemos em 2007 na Quinta da Saudade, em Muxagata — no coração do Douro Superior.
@@ -29,40 +30,36 @@ const schema = schemaOrganization();
       </p>
       <p class="text-base md:text-lg text-gray-300 leading-relaxed mb-10 max-w-2xl mx-auto">
         Agora disponíveis para restaurantes, importadoras e distribuidores no Brasil.
-        Condições especiais de atacado, suporte completo e uma história real por trás de cada rótulo.
+        Fichas técnicas, suporte completo e uma história real por trás de cada rótulo.
       </p>
       <p class="font-serif text-xl text-[var(--color-gold)] italic mb-10">
         "Bons amigos, bons vinhos, bons momentos."
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/para-o-brasil" class="btn-secondary">Oportunidade no Brasil →</a>
+        <a href="/contato?interesse=atacado" class="btn-secondary">Receber fichas técnicas e condições comerciais</a>
         <a href="/vinhos" class="btn-primary border-white text-white hover:bg-white hover:text-[var(--color-dark)]">
-          Ver os vinhos
+          Conhecer os vinhos
         </a>
       </div>
     </div>
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 animate-bounce">
-      <span class="text-[10px] uppercase tracking-widest">Explorar</span>
+      <span class="text-[10px] uppercase tracking-widest">Descobrir</span>
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7"/>
       </svg>
     </div>
   </section>
 
-  <!-- ── POR QUE ESCOLHER PALATO DO CÔA ── -->
+  <!-- ── PROPOSTA DE VALOR ── -->
   <section class="py-24 px-6 max-w-5xl mx-auto text-center">
-    <p class="section-subtitle">Proposta de valor</p>
-    <h2 class="section-title">Por que escolher Palato do Côa</h2>
+    <p class="section-subtitle">Uma história de amizade e terroir</p>
+    <h2 class="section-title">Autenticidade, elegância e história em cada garrafa</h2>
     <div class="divider-gold mx-auto"></div>
     <p class="text-[var(--color-muted)] leading-relaxed max-w-2xl mx-auto mb-6">
-      Palato do Côa nasce de uma paixão compartilhada por seis amigos que, em 2007, decidiram
-      investir no melhor terroir do Douro Superior. Hoje, esses vinhos chegam ao Brasil para quem
-      valoriza <strong>autenticidade, elegância e história em cada garrafa</strong>.
+      Em 2007, seis amigos apaixonados por vinho compraram a Quinta da Saudade em Muxagata, no extremo leste do Douro Superior. Não havia atalhos no plano: uvas próprias, enologia de autor e um terroir de xisto que poucos produtores no mundo podem reivindicar.
     </p>
     <p class="text-[var(--color-muted)] leading-relaxed max-w-2xl mx-auto mb-10">
-      O Palato do Côa oferece ao mercado brasileiro vinhos com identidade própria do Douro Superior,
-      produção controlada e excelente relação qualidade-preço. Atendemos com condições diferenciadas
-      de atacado, logística dedicada e materiais de apoio para sua equipe de vendas e sommeliers.
+      Para o mercado brasileiro, isso significa acesso a vinhos com <strong>identidade inconfundível, pequena produção e margens atrativas</strong> — com todo o suporte para a sua equipa de vendas, sommeliers e carta de vinhos.
     </p>
     <a href="/essencia" class="btn-primary">Conhecer a nossa história</a>
   </section>
@@ -74,18 +71,18 @@ const schema = schemaOrganization();
         {[
           {
             icon: "🪨",
-            title: "Terroir único do Douro Superior",
-            text: "Altitude elevada, solo de xisto e amplitude térmica extrema criam vinhos com mineralidade e elegância impossíveis de replicar. Um terroir que conta história em cada taça.",
+            title: "Terroir de xisto único",
+            text: "Altitude elevada, solo de xisto e amplitudes térmicas extremas criam vinhos com mineralidade viva e elegância que não se fabricam — emergem do Vale do Côa como em nenhum outro lugar.",
           },
           {
             icon: "🍇",
             title: "100% uvas da propriedade",
-            text: "Todos os vinhos Palato do Côa são produzidos exclusivamente com uvas da Quinta da Saudade, em Muxagata. Controlo total da qualidade, do xisto ao copo.",
+            text: "Nenhuma uva comprada, nenhuma concessão. Todos os vinhos nascem exclusivamente na Quinta da Saudade — controlo total da qualidade, da videira à garrafa.",
           },
           {
-            icon: "🏆",
-            title: "Vantagens competitivas para B2B",
-            text: "Fichas técnicas, fotos profissionais, treinamento de equipe e suporte completo. Tudo para você vender mais com vinhos que têm história para contar.",
+            icon: "🤝",
+            title: "Parceiro real para o seu negócio",
+            text: "Fichas técnicas completas, fotos profissionais, treinamento de equipe e suporte dedicado. Tudo para que os seus clientes conheçam e repitam.",
           },
         ].map((item) => (
           <div class="text-center p-8 border border-[var(--color-border)] hover:border-[var(--color-gold)] transition-colors">
@@ -99,57 +96,84 @@ const schema = schemaOrganization();
   </section>
 
   <!-- ── VINHOS DESTAQUE ── -->
-  {featuredWines.length > 0 && (
+  {sort(featuredWines).length > 0 && (
     <section class="py-24 px-6">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16">
-          <p class="section-subtitle">Vinho douro superior atacado</p>
-          <h2 class="section-title">Nossos Vinhos</h2>
+          <p class="section-subtitle">Vinho português para o Brasil</p>
+          <h2 class="section-title">Os nossos vinhos</h2>
           <div class="divider-gold mx-auto"></div>
           <p class="text-sm text-[var(--color-muted)] max-w-xl mx-auto mt-4">
-            Palato do Côa Branco, Tinto e Vinhas do Côa — disponíveis para restaurantes,
-            importadoras e adegas em todo o Brasil.
+            Duas linhas complementares do Douro — da entrada acessível ao topo de gama de colecionador. Disponíveis para restaurantes, importadoras e adegas em todo o Brasil.
           </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {featuredWines.slice(0, 3).map((wine) => (
+          {sort(featuredWines).slice(0, 3).map((wine) => (
             <a href={`/vinhos/${wine.id}`} class="group border border-[var(--color-border)] p-6 hover:border-[var(--color-gold)] transition-all bg-white">
               <p class="text-xs uppercase tracking-widest text-[var(--color-gold)] mb-2">
-                {wine.data.type} · Douro Superior
+                {wine.data.type} · Vale do Côa
               </p>
               <h3 class="font-serif text-xl group-hover:text-[var(--color-gold)] transition-colors mb-2">
                 {wine.data.title}
               </h3>
               <p class="text-sm text-[var(--color-muted)] line-clamp-3">{wine.data.description}</p>
               <p class="text-xs uppercase tracking-widest mt-4 group-hover:text-[var(--color-gold)] transition-colors">
-                Ver ficha técnica →
+                Ver detalhes e ficha técnica →
               </p>
             </a>
           ))}
         </div>
         <div class="text-center mt-10">
-          <a href="/vinhos" class="btn-primary">Ver todos os vinhos</a>
+          <a href="/vinhos" class="btn-primary">Ver toda a gama</a>
         </div>
       </div>
     </section>
   )}
 
-  <!-- ── OPORTUNIDADE NO BRASIL ── -->
+  <!-- ── POR QUE TRABALHAR CONNOSCO ── -->
+  <section class="py-20 px-6 bg-white border-t border-[var(--color-border)]">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <p class="section-subtitle">Para restaurantes, importadoras e adegas</p>
+        <h2 class="section-title">Por que trabalhar com o Palato do Côa?</h2>
+        <div class="divider-gold mx-auto"></div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+        {[
+          { icon: "🌿", text: "Produção própria e limitada — identidade que se vende sozinha" },
+          { icon: "📋", text: "Fichas técnicas, fotos profissionais e materiais de apoio incluídos" },
+          { icon: "📦", text: "Logística dedicada para o mercado brasileiro" },
+          { icon: "💰", text: "Margens atrativas para o canal Horeca e retalho especializado" },
+          { icon: "🎓", text: "Treinamento de equipe e suporte para sommeliers" },
+          { icon: "🏆", text: "Vinhos com história que fidelizam clientes e diferenciam cartas" },
+        ].map((item) => (
+          <div class="flex items-start gap-4 p-5 border border-[var(--color-border)] hover:border-[var(--color-gold)] transition-colors">
+            <span class="text-2xl flex-shrink-0">{item.icon}</span>
+            <p class="text-sm text-[var(--color-muted)] leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a href="/contato?interesse=atacado" class="btn-secondary">Conhecer as condições especiais para restaurantes</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA FINAL ── -->
   <section class="py-24 px-6 bg-[var(--color-dark)] text-white">
     <div class="max-w-3xl mx-auto text-center">
-      <p class="section-subtitle text-[var(--color-gold)]">Oportunidade no Brasil</p>
+      <p class="section-subtitle text-[var(--color-gold)]">Pronto para diferenciar a sua carta?</p>
       <h2 class="font-serif text-4xl md:text-5xl mb-6">
-        Diferencie sua carta de vinhos com o Douro Superior
+        Leve o terroir do Douro para a sua mesa
       </h2>
       <div class="divider-gold mx-auto"></div>
       <p class="text-gray-300 leading-relaxed mb-10 max-w-xl mx-auto">
-        Atendemos restaurantes, importadoras, adegas e distribuidores com condições especiais
-        de atacado, logística dedicada e suporte completo para sua equipe.
+        Fale com a nossa equipa no Brasil e receba fichas técnicas completas, condições de atacado e tudo o que precisa para começar.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/para-o-brasil" class="btn-secondary">Como se tornar parceiro</a>
         <a href="/contato" class="btn-primary border-white text-white hover:bg-white hover:text-[var(--color-dark)]">
-          Falar com nossa equipe
+          Falar com a nossa equipa no Brasil
         </a>
       </div>
     </div>
