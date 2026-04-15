@@ -85,11 +85,11 @@ const schemas = schema
       async
       src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS.GA4_ID}`}
     ></script>
-    <script define:vars={{ GA4_ID: ANALYTICS.GA4_ID }}>
+    <script is:inline define:vars={{ GA4_ID: ANALYTICS.GA4_ID }}>
       window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
+      window.gtag = function() { dataLayer.push(arguments); };
       gtag("js", new Date());
-      gtag("config", GA4_ID, { anonymize_ip: true });
+      gtag("config", GA4_ID);
     </script>
   </>
 )}
