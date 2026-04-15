@@ -2,7 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import WineCard from "../../components/ui/WineCard.astro";
 import { getCollection } from "astro:content";
-import { schemaBreadcrumb } from "../../lib/seo";
+import { schemaBreadcrumb, SITE } from "../../lib/seo";
 
 const allWines = await getCollection("wines");
 const byLine = {
@@ -18,17 +18,21 @@ const schema = schemaBreadcrumb([
 ---
 
 <Layout
-  title="Os Vinhos | Palato do Côa"
-  description="Catálogo completo dos vinhos Palato do Côa e Vinhas do Côa — brancos, tintos e rosés do Douro Superior, disponíveis para importação no Brasil."
+  title="Vinhos Palato do Côa - Branco e Tinto do Douro Superior"
+  description="Palato do Côa Branco, Tinto e Vinhas do Côa. Vinhos frescos, elegantes e cheios de personalidade do Douro Superior. Perfeitos para harmonizar com a gastronomia brasileira."
+  keywords={`vinho tinto douro superior, vinho branco douro, vinhas do côa, palato do côa branco, palato do côa tinto, ${SITE.keywords.b2c}, ${SITE.keywords.b2b}`}
   schema={schema}
 >
   <section class="py-20 px-6 border-b border-[var(--color-border)] text-center">
-    <p class="section-subtitle">100% uvas da propriedade · Douro Superior</p>
-    <h1 class="section-title">Os nossos vinhos</h1>
+    <p class="section-subtitle">100% uvas da propriedade · Quinta da Saudade · Muxagata</p>
+    <h1 class="font-serif text-4xl md:text-5xl text-[var(--color-dark)] mb-4">
+      Nossos Vinhos — Douro Superior em cada garrafa
+    </h1>
     <div class="divider-gold mx-auto"></div>
     <p class="text-sm text-[var(--color-muted)] max-w-xl mx-auto leading-relaxed">
-      Duas linhas, um terroir único. Cada garrafa feita exclusivamente com uvas
-      da Quinta da Saudade, em Muxagata.
+      Duas linhas complementares de <strong>vinho do Douro Superior</strong>, produzidos exclusivamente
+      com uvas da Quinta da Saudade, em Muxagata. Fichas técnicas completas disponíveis para
+      restaurantes, importadoras e adegas.
     </p>
   </section>
 
@@ -36,14 +40,20 @@ const schema = schemaBreadcrumb([
     <section class="py-16 px-6 max-w-7xl mx-auto">
       <div class="mb-10">
         <h2 class="font-serif text-2xl mb-1">
-          {line === "palato-do-coa" ? "Palato do Côa" :
-           line === "vinhas-do-coa" ? "Vinhas do Côa" : "Edições Especiais"}
+          {line === "palato-do-coa" ? "Palato do Côa — Linha Premium" :
+           line === "vinhas-do-coa" ? "Vinhas do Côa — Linha Entrada" : "Edições Especiais"}
         </h2>
         {line === "palato-do-coa" && (
-          <p class="text-sm text-[var(--color-muted)]">A linha de topo — elegância e personalidade plenas do Douro Superior.</p>
+          <p class="text-sm text-[var(--color-muted)] max-w-2xl">
+            A linha de topo — elegância e personalidade plenas do <strong>terroir do Douro Superior</strong>.
+            Excelente giro e margem para restaurantes e adegas especializadas.
+          </p>
         )}
         {line === "vinhas-do-coa" && (
-          <p class="text-sm text-[var(--color-muted)]">A porta de entrada ideal para descobrir o Douro Superior com excelente relação qualidade-preço.</p>
+          <p class="text-sm text-[var(--color-muted)] max-w-2xl">
+            A porta de entrada ideal para descobrir o Douro Superior. Frutado, fresco, versátil
+            e com <strong>excelente relação qualidade-preço</strong> para cartas de restaurante.
+          </p>
         )}
         <div class="divider-gold mt-4"></div>
       </div>
@@ -63,13 +73,34 @@ const schema = schemaBreadcrumb([
     </section>
   ))}
 
-  <section class="py-16 px-6 text-center bg-white border-t border-[var(--color-border)]">
-    <p class="section-subtitle">Compra Atacado</p>
-    <h2 class="font-serif text-3xl mb-4">Interesse em distribuição?</h2>
+  <!-- Harmonizações Profissionais -->
+  <section class="py-16 px-6 bg-white border-t border-[var(--color-border)]">
+    <div class="max-w-5xl mx-auto text-center mb-10">
+      <p class="section-subtitle">Para chefs e sommeliers</p>
+      <h2 class="font-serif text-3xl mb-3">Harmonizações Profissionais</h2>
+      <div class="divider-gold mx-auto"></div>
+    </div>
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+      {[
+        { vinho: "Palato do Côa Tinto", harmoniza: "Picanha na brasa · Risoto de cogumelos · Cordeiro assado · Churrasco gaúcho" },
+        { vinho: "Palato do Côa Branco", harmoniza: "Moqueca leve · Camarão · Frutos do mar · Sushi e sashimi" },
+        { vinho: "Vinhas do Côa Tinto", harmoniza: "Massas ao molho · Pizza artesanal · Hambúrguer gourmet · Churrasco casual" },
+      ].map((item) => (
+        <div class="border border-[var(--color-border)] p-6">
+          <h3 class="font-serif text-lg mb-3 text-[var(--color-gold)]">{item.vinho}</h3>
+          <p class="text-sm text-[var(--color-muted)] leading-relaxed">{item.harmoniza}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="py-16 px-6 text-center border-t border-[var(--color-border)]">
+    <p class="section-subtitle">Vinho douro superior atacado</p>
+    <h2 class="font-serif text-3xl mb-4">Solicitar condições de atacado</h2>
     <p class="text-sm text-[var(--color-muted)] max-w-md mx-auto mb-8">
-      Condições especiais para restaurantes, importadoras e adegas no Brasil.
-      Suporte completo com fichas técnicas, fotos e conteúdo para redes sociais.
+      Fichas técnicas completas, fotos profissionais e condições especiais para
+      restaurantes, importadoras e adegas em todo o Brasil.
     </p>
-    <a href="/para-o-brasil" class="btn-secondary">Saiba como funciona</a>
+    <a href="/para-o-brasil" class="btn-secondary">Como se tornar parceiro</a>
   </section>
 </Layout>

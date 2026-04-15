@@ -1,34 +1,52 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { schemaBreadcrumb } from "../lib/seo";
+import { schemaBreadcrumb, schemaFAQ, SITE } from "../lib/seo";
 
-const schema = schemaBreadcrumb([
-  { name: "Início", url: "/" },
-  { name: "Para o Brasil", url: "/para-o-brasil" },
-]);
+const faqs = [
+  {
+    question: "Como posso importar os vinhos Palato do Côa para o Brasil?",
+    answer: "Entre em contato através do nosso formulário ou e-mail brasil@palatodocoa.pt. Trabalhamos com importadoras homologadas e podemos indicar parceiros logísticos para o processo de importação.",
+  },
+  {
+    question: "Qual é o volume mínimo para pedidos de atacado?",
+    answer: "O volume mínimo e as condições específicas são definidos conforme o perfil do parceiro (restaurante, importadora, adega). Entre em contato para receber uma proposta personalizada.",
+  },
+  {
+    question: "Vocês oferecem exclusividade regional?",
+    answer: "Sim, analisamos propostas de exclusividade regional para distribuidores e importadoras comprometidos com o desenvolvimento da marca no Brasil.",
+  },
+  {
+    question: "É possível visitar a quinta no Douro Superior?",
+    answer: "Sim. Temos um programa exclusivo para parceiros brasileiros que inclui visita guiada à Quinta da Saudade, prova guiada e reunião comercial. Consulte disponibilidade.",
+  },
+];
+
+const schemas = [
+  schemaBreadcrumb([{ name: "Início", url: "/" }, { name: "Para o Brasil", url: "/para-o-brasil" }]),
+  schemaFAQ(faqs),
+];
 ---
 <Layout
-  title="Para o Brasil | Palato do Côa"
-  description="O Palato do Côa está disponível no Brasil para restaurantes, importadoras, adegas e distribuidores. Condições especiais de atacado e suporte completo."
-  schema={schema}
+  title="Palato do Côa no Brasil - Atacado para Restaurantes e Importadoras"
+  description="Condições especiais de atacado para importadoras, distribuidores, restaurantes e adegas. Suporte completo com fichas técnicas, fotos, treinamento e exclusividade regional."
+  keywords={`${SITE.keywords.b2b}, vinho português para restaurante, como importar vinho portugal brasil, vinho douro exclusivo brasil`}
+  schema={schemas}
 >
-  <!-- Hero -->
   <section class="py-20 px-6 border-b border-[var(--color-border)] text-center">
-    <p class="section-subtitle">Mercado Brasileiro</p>
-    <h1 class="section-title">Pronto para levar o Douro Superior à sua mesa?</h1>
+    <p class="section-subtitle">Vinho Douro Superior Atacado</p>
+    <h1 class="font-serif text-4xl md:text-5xl text-[var(--color-dark)] mb-4">
+      Pronto para levar o Douro Superior ao seu negócio?
+    </h1>
     <div class="divider-gold mx-auto"></div>
   </section>
 
-  <!-- Para quem -->
   <section class="py-16 px-6 max-w-5xl mx-auto">
+
+    <!-- Vantagens para Parceiros -->
     <div class="text-center mb-12">
-      <p class="section-subtitle">Para quem é</p>
-      <h2 class="font-serif text-3xl">O Palato do Côa no Brasil</h2>
+      <p class="section-subtitle">Vantagens para Parceiros</p>
+      <h2 class="font-serif text-3xl">Por que distribuir Palato do Côa no Brasil</h2>
       <div class="divider-gold mx-auto mt-4"></div>
-      <p class="text-sm text-[var(--color-muted)] max-w-xl mx-auto mt-4">
-        O Palato do Côa já está disponível no Brasil para quem quer diferenciar-se
-        com vinhos autênticos, com história e com nome por trás.
-      </p>
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
@@ -36,22 +54,22 @@ const schema = schemaBreadcrumb([
         {
           icon: "🍽️",
           title: "Restaurantes e Chefs",
-          text: "Diferenciação real na carta de vinhos. Vinhos com história, terroir único e enólogos identificados — o storytelling que os seus clientes vão lembrar.",
+          text: "Diferenciação real na carta de vinhos. Vinhos do Douro Superior com história, terroir único e enólogos identificados — o storytelling que os seus clientes vão lembrar e recomendar.",
         },
         {
           icon: "🏢",
           title: "Importadoras e Distribuidores",
-          text: "Exclusividade e parceria de longo prazo. Trabalhamos com quem partilha a nossa visão de qualidade e autenticidade.",
+          text: "Exclusividade e parceria de longo prazo. Trabalhamos com quem partilha a nossa visão de qualidade e autenticidade no mercado premium brasileiro.",
         },
         {
           icon: "🍾",
           title: "Adegas e Lojas Especializadas",
-          text: "Rótulos que se vendem pela história. Fichas técnicas completas, material visual e suporte para formação da equipe.",
+          text: "Rótulos que se vendem pela história. Fichas técnicas completas, material visual profissional e suporte para formação da equipe de vendas.",
         },
         {
           icon: "🥂",
-          title: "Enófilos e Colecionadores",
-          text: "Para quem valoriza origem, qualidade e a experiência de descobrir vinhos portugueses autênticos, directo do produtor.",
+          title: "Hotéis e Eventos Premium",
+          text: "Para quem quer elevar a experiência dos hóspedes e convidados com vinhos portugueses autênticos, directo do produtor do Douro Superior.",
         },
       ].map((item) => (
         <div class="flex gap-5 p-8 border border-[var(--color-border)] hover:border-[var(--color-gold)] transition-colors bg-white">
@@ -64,21 +82,21 @@ const schema = schemaBreadcrumb([
       ))}
     </div>
 
-    <!-- O que oferecemos -->
+    <!-- Como se Tornar Parceiro -->
     <div class="bg-[var(--color-dark)] text-white p-10 md:p-14 mb-20">
-      <p class="section-subtitle text-[var(--color-gold)]">O que incluímos</p>
-      <h2 class="font-serif text-3xl mb-6">Suporte completo para o seu negócio</h2>
+      <p class="section-subtitle text-[var(--color-gold)]">Como se Tornar Parceiro</p>
+      <h2 class="font-serif text-3xl mb-6">O que está incluído na parceria</h2>
       <div class="divider-gold mb-8"></div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
         {[
-          "Condições especiais de atacado",
-          "Logística dedicada para o Brasil",
+          "Condições especiais de atacado para vinho douro superior",
+          "Logística dedicada e suporte à importação",
           "Fichas técnicas completas em PT-BR",
-          "Fotos profissionais das garrafas",
+          "Fotos profissionais das garrafas em alta resolução",
           "Treinamento de equipe (presencial ou online)",
-          "Conteúdo para redes sociais",
-          "Suporte directo com os enólogos",
-          "Visita à quinta (programa exclusivo para parceiros BR)",
+          "Conteúdo para redes sociais pronto para usar",
+          "Suporte directo com os enólogos Carloto e Paulo",
+          "Programa exclusivo de visita à Quinta da Saudade",
         ].map((item) => (
           <div class="flex items-center gap-3">
             <span class="text-[var(--color-gold)] text-lg flex-shrink-0">→</span>
@@ -86,29 +104,42 @@ const schema = schemaBreadcrumb([
           </div>
         ))}
       </div>
+      <a href="/contato" class="btn-secondary inline-block">Solicitar proposta comercial</a>
     </div>
 
-    <!-- Depoimento / Social proof placeholder -->
-    <div class="border border-[var(--color-border)] p-8 text-center mb-20">
-      <p class="font-serif text-xl text-[var(--color-muted)] italic mb-4">
-        "Quer ser um dos primeiros a trazer esta história autêntica para o mercado brasileiro?"
-      </p>
-      <div class="divider-gold mx-auto"></div>
-      <p class="text-xs uppercase tracking-widest text-[var(--color-gold)] mt-4">
-        Parceiros em todo o Brasil
-      </p>
+    <!-- FAQ com Schema.org -->
+    <div class="mb-20">
+      <div class="text-center mb-10">
+        <p class="section-subtitle">Dúvidas frequentes</p>
+        <h2 class="font-serif text-3xl">Perguntas sobre importação e atacado</h2>
+        <div class="divider-gold mx-auto mt-4"></div>
+      </div>
+      <div class="space-y-4">
+        {faqs.map((faq) => (
+          <details class="border border-[var(--color-border)] group">
+            <summary class="flex justify-between items-center p-6 cursor-pointer list-none">
+              <h3 class="font-serif text-lg pr-4">{faq.question}</h3>
+              <span class="text-[var(--color-gold)] text-xl flex-shrink-0 group-open:rotate-45 transition-transform">+</span>
+            </summary>
+            <div class="px-6 pb-6">
+              <p class="text-sm text-[var(--color-muted)] leading-relaxed">{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
     </div>
 
     <!-- CTA final -->
-    <div class="text-center">
+    <div class="text-center border-t border-[var(--color-border)] pt-16">
       <p class="section-subtitle">Próximo passo</p>
       <h2 class="font-serif text-3xl mb-4">Vamos conversar?</h2>
       <p class="text-sm text-[var(--color-muted)] max-w-md mx-auto mb-8">
         Estamos aqui para atender você com a mesma dedicação que colocamos em cada garrafa.
+        Respondemos em até 48 horas úteis.
       </p>
       <div class="flex gap-4 justify-center flex-wrap">
         <a href="/contato" class="btn-secondary">Fale com nossa equipe</a>
-        <a href="/vinhos" class="btn-primary">Ver os vinhos primeiro</a>
+        <a href="/vinhos" class="btn-primary">Ver fichas técnicas dos vinhos</a>
       </div>
     </div>
   </section>

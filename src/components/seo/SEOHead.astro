@@ -5,6 +5,7 @@ import { ANALYTICS } from "../../lib/analytics";
 interface Props {
   title: string;
   description: string;
+  keywords?: string;
   image?: string;
   canonical?: string;
   type?: "website" | "article" | "product";
@@ -15,6 +16,7 @@ interface Props {
 const {
   title,
   description,
+  keywords,
   image = SITE.defaultOgImage,
   canonical,
   type = "website",
@@ -40,8 +42,10 @@ const schemas = schema
 <!-- SEO -->
 <title>{fullTitle}</title>
 <meta name="description" content={description} />
+{keywords && <meta name="keywords" content={keywords} />}
 <link rel="canonical" href={fullCanonical} />
 {noindex && <meta name="robots" content="noindex, nofollow" />}
+{!noindex && <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />}
 
 <!-- Hreflang PT ↔ BR -->
 {HREFLANG.map((h) => (

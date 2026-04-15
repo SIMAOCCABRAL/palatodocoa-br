@@ -18,15 +18,17 @@ const typeLabel: Record<string, string> = {
 ---
 
 <article class="group border border-[var(--color-border)] bg-white hover:shadow-lg transition-all duration-300">
-  <a href={`/beber/${slug}`} class="block">
+  <a href={`/vinhos/${slug}`} class="block">
     <!-- Imagem -->
     <div class="relative overflow-hidden bg-[var(--color-cream)] h-72 flex items-center justify-center">
       {image ? (
         <img
           src={image}
-          alt={title}
+          alt={`Garrafa de ${typeLabel[type] || type} ${title} - Douro Superior Portugal`}
           class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
+          width="600"
+          height="900"
         />
       ) : (
         <div class="flex flex-col items-center gap-2 text-[var(--color-border)]">

@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { schemaBreadcrumb } from "../lib/seo";
+import { schemaBreadcrumb, SITE } from "../lib/seo";
 
 const schema = schemaBreadcrumb([
   { name: "Início", url: "/" },
@@ -8,33 +8,39 @@ const schema = schemaBreadcrumb([
 ]);
 ---
 <Layout
-  title="O Terroir | Palato do Côa"
-  description="Douro Superior: altitude, xisto e sol que fazem a diferença. Conheça o terroir único da Quinta da Saudade, em Muxagata, onde nascem os vinhos Palato do Côa."
+  title="Terroir Douro Superior - Quinta Palato do Côa"
+  description="Altitude elevada, solo de xisto e amplitude térmica do Douro Superior criam vinhos elegantes e minerais. Conheça o terroir único que faz do Palato do Côa um vinho especial."
+  keywords={`terroir douro superior, vinho xisto douro, quinta da saudade muxagata, vinho douro superior, altitude douro, ${SITE.keywords.b2c}`}
   schema={schema}
 >
-  <!-- Hero -->
   <section class="py-20 px-6 border-b border-[var(--color-border)] text-center">
-    <p class="section-subtitle">Douro Superior: altitude, xisto e sol que fazem a diferença</p>
-    <h1 class="section-title">Um terroir que conta história</h1>
+    <p class="section-subtitle">Altitude, Xisto e Sol que fazem a diferença</p>
+    <h1 class="font-serif text-4xl md:text-5xl text-[var(--color-dark)] mb-4">
+      O Terroir Único do Douro Superior
+    </h1>
     <div class="divider-gold mx-auto"></div>
   </section>
 
-  <!-- Intro -->
   <section class="py-16 px-6 max-w-5xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-20">
       <div>
-        <p class="section-subtitle">Muxagata, Vale do Côa</p>
-        <h2 class="font-serif text-3xl mb-4">O extremo leste do Douro Superior</h2>
+        <p class="section-subtitle">Por que o Douro Superior é especial</p>
+        <h2 class="font-serif text-3xl mb-4">Muxagata — O extremo leste do Douro Superior</h2>
         <div class="divider-gold"></div>
         <p class="text-[var(--color-muted)] leading-relaxed mb-4">
-          Localizada em Muxagata, no extremo leste do Douro Superior, a Quinta do Palato
-          beneficia-se de um terroir único — um verdadeiro "vulcão" de xisto que produz
-          vinhos com identidade forte, mas ao mesmo tempo refinados e prontos para
-          envelhecer com graça.
+          Localizada em <strong>Muxagata, no extremo leste do Douro Superior</strong>, a Quinta
+          da Saudade beneficia-se de um terroir único — um verdadeiro "vulcão" de xisto que produz
+          vinhos com identidade forte, mas ao mesmo tempo refinados e prontos para envelhecer com graça.
+        </p>
+        <p class="text-[var(--color-muted)] leading-relaxed mb-4">
+          É neste ambiente de extremos que as uvas atingem uma concentração de sabores impossível
+          de replicar em qualquer outra região do mundo. <strong>Vinho do Douro Superior</strong>
+          não é apenas uma indicação geográfica — é uma garantia de caráter.
         </p>
         <p class="text-[var(--color-muted)] leading-relaxed">
-          É neste ambiente de extremos que as uvas atingem uma concentração de sabores
-          impossível de replicar em qualquer outra região do mundo.
+          Para restaurantes e importadoras brasileiras, isto significa vinhos com
+          <strong>perfil sensorial diferenciado</strong>, excelente aceitação no mercado premium
+          e uma história de terroir que os seus clientes vão querer ouvir.
         </p>
       </div>
       <div class="bg-[var(--color-border)] h-80 flex items-center justify-center">
@@ -42,11 +48,11 @@ const schema = schemaBreadcrumb([
       </div>
     </div>
 
-    <!-- 4 pilares do terroir -->
+    <!-- 4 pilares -->
     <div class="border-t border-[var(--color-border)] pt-16 mb-20">
       <div class="text-center mb-12">
-        <p class="section-subtitle">Os quatro pilares</p>
-        <h2 class="font-serif text-3xl">O que torna este terroir único</h2>
+        <p class="section-subtitle">Altitude, Xisto e Sol</p>
+        <h2 class="font-serif text-3xl">Vantagens Competitivas do Terroir</h2>
         <div class="divider-gold mx-auto mt-4"></div>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -54,22 +60,22 @@ const schema = schemaBreadcrumb([
           {
             icon: "⛰️",
             title: "Altitude elevada",
-            text: "Noites frescas que preservam a acidez e a elegância natural das uvas. A altitude compensa o calor extremo dos dias de verão, dando ao vinho frescura e longevidade.",
+            text: "Noites frescas que preservam a acidez e a elegância natural das uvas. A altitude compensa o calor extremo dos dias de verão, dando ao vinho frescura e longevidade — chave para vinhos que envelhecem com graça.",
           },
           {
             icon: "🪨",
             title: "Solo de xisto",
-            text: "Mineralidade e estrutura marcante. As raízes penetram metros de profundidade em busca de água, concentrando sabores únicos e transmitindo ao vinho a assinatura mineral do Douro Superior.",
+            text: "Mineralidade e estrutura marcante. As raízes penetram metros de profundidade em busca de água, concentrando sabores únicos. O xisto do Douro Superior transmite uma assinatura mineral que distingue estes vinhos no mercado global.",
           },
           {
             icon: "☀️",
             title: "Sol intenso",
-            text: "Maturação perfeita das uvas. A exposição solar generosa garante uvas com açúcar natural elevado e cor profunda — a base dos tintos encorpados que caracterizam a região.",
+            text: "Maturação perfeita das uvas. A exposição solar generosa garante uvas com açúcar natural elevado e cor profunda — a base dos vinhos tintos encorpados que caracterizam a região.",
           },
           {
             icon: "🌡️",
             title: "Clima continental extremo",
-            text: "Amplitude térmica que concentra aromas e sabores. A diferença de mais de 20°C entre o dia e a noite em setembro obriga a uva a produzir mais compostos aromáticos — resultado direto: vinhos mais complexos.",
+            text: "Amplitude térmica que concentra aromas e sabores. A diferença de mais de 20°C entre o dia e a noite em setembro obriga a uva a produzir mais compostos aromáticos — vinhos com complexidade superior.",
           },
         ].map((item) => (
           <div class="flex gap-5 p-6 border border-[var(--color-border)] hover:border-[var(--color-gold)] transition-colors">
@@ -88,22 +94,22 @@ const schema = schemaBreadcrumb([
       <span class="text-xs uppercase tracking-widest text-[var(--color-muted)]">douro-paisagem.jpg</span>
     </div>
 
-    <!-- Castas -->
+    <!-- Perfil Sensorial -->
     <div class="border-t border-[var(--color-border)] pt-16">
       <div class="text-center mb-12">
-        <p class="section-subtitle">As castas</p>
-        <h2 class="font-serif text-3xl">DNA exclusivo de Portugal</h2>
+        <p class="section-subtitle">Perfil Sensorial</p>
+        <h2 class="font-serif text-3xl">Castas Autóctones do Douro Superior</h2>
         <div class="divider-gold mx-auto mt-4"></div>
         <p class="text-sm text-[var(--color-muted)] max-w-xl mx-auto mt-4">
-          Trabalhamos exclusivamente com castas autóctones — variedades que não existem
-          em mais nenhum lugar do mundo com esta expressão.
+          Variedades únicas que não existem com esta expressão em mais nenhum lugar do mundo.
+          O DNA sensorial que diferencia o <strong>vinho do Douro Superior</strong>.
         </p>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         {[
-          { nome: "Touriga Nacional", tipo: "Tinto", desc: "A rainha das castas portuguesas. Aromas intensos de violeta e frutos negros, taninos estruturados e excepcional capacidade de envelhecimento." },
-          { nome: "Touriga Franca", tipo: "Tinto", desc: "Elegância e frescura. Complementa a potência da Touriga Nacional com acidez viva e aromas florais delicados." },
-          { nome: "Gouveio & Rabigato", tipo: "Branco", desc: "Castas brancas autóctones do Douro. Frescura cítrica, mineralidade e corpo generoso — a base dos nossos brancos elegantes." },
+          { nome: "Touriga Nacional", tipo: "Tinto", desc: "A rainha das castas portuguesas. Aromas intensos de violeta e frutos negros, taninos estruturados e capacidade excepcional de envelhecimento. O coração dos tintos Palato do Côa." },
+          { nome: "Touriga Franca", tipo: "Tinto", desc: "Elegância e frescura. Complementa a potência da Touriga Nacional com acidez viva e aromas florais. A casta que dá equilíbrio e fineza ao blend." },
+          { nome: "Gouveio & Rabigato", tipo: "Branco", desc: "Castas brancas autóctones do Douro Superior. Frescura cítrica, mineralidade marcante e corpo generoso — a assinatura dos brancos Palato do Côa, perfeitos para gastronomia." },
         ].map((casta) => (
           <div class="p-6 bg-white border border-[var(--color-border)]">
             <p class="text-xs uppercase tracking-widest text-[var(--color-gold)] mb-1">{casta.tipo}</p>
@@ -115,15 +121,14 @@ const schema = schemaBreadcrumb([
     </div>
   </section>
 
-  <!-- CTA -->
   <section class="py-16 px-6 text-center bg-white border-t border-[var(--color-border)]">
-    <h2 class="font-serif text-3xl mb-4">Sinta este terroir no copo</h2>
+    <h2 class="font-serif text-3xl mb-4">Leve este terroir para a carta do seu restaurante</h2>
     <p class="text-sm text-[var(--color-muted)] mb-8 max-w-md mx-auto">
-      Cada garrafa é a expressão directa deste lugar único.
+      Vinhos com identidade forte, história de terroir e excelente aceitação no mercado premium brasileiro.
     </p>
     <div class="flex gap-4 justify-center flex-wrap">
-      <a href="/vinhos" class="btn-secondary">Ver os vinhos</a>
-      <a href="/contato" class="btn-primary">Solicitar orçamento</a>
+      <a href="/vinhos" class="btn-secondary">Ver fichas técnicas</a>
+      <a href="/contato" class="btn-primary">Solicitar condições de atacado</a>
     </div>
   </section>
 </Layout>

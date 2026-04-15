@@ -51,7 +51,7 @@ const schemas = [
     <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
       <div class="bg-white border border-[var(--color-border)] flex items-center justify-center min-h-96 p-8">
         {wine.data.image ? (
-          <img src={wine.data.image} alt={wine.data.title} class="max-h-96 object-contain" />
+          <img src={wine.data.image} alt={`Garrafa ${wine.data.title} - Vinho ${wine.data.type} Douro Superior Portugal`} class="max-h-96 object-contain" />
         ) : (
           <div class="text-[var(--color-border)] text-center">
             <svg class="w-20 h-20 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
