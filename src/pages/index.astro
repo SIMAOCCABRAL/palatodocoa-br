@@ -4,42 +4,45 @@ import { schemaOrganization } from "../lib/seo";
 import { getCollection } from "astro:content";
 
 const featuredWines = await getCollection("wines", ({ data }) => data.featured);
-
 const schema = schemaOrganization();
 ---
 
 <Layout
-  title="Palato do Côa | Vinhos do Douro Superior para o Brasil"
-  description="Vinhos premium do Douro Superior, Portugal, para o mercado brasileiro. Atacado, restaurantes e importadoras. Bons amigos, bons vinhos, bons momentos."
+  title="Palato do Côa | Douro Superior · Portugal chega ao Brasil"
+  description="Seis amigos, um sonho e um pedaço de xisto no coração do Douro Superior. Vinhos 100% da propriedade, elegantes e autênticos. Disponíveis no Brasil."
   schema={schema}
 >
 
   <!-- ── HERO ── -->
   <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[var(--color-dark)]">
-    <!-- Background image placeholder — trocar por foto real -->
-    <div class="absolute inset-0 bg-[url('/images/hero-quinta.jpg')] bg-cover bg-center opacity-40"></div>
+    <div class="absolute inset-0 bg-[url('/images/hero/hero-quinta.jpg')] bg-cover bg-center opacity-40"></div>
 
     <div class="relative z-10 text-center text-white px-6 max-w-3xl mx-auto animate-fade-in">
       <p class="text-xs uppercase tracking-[0.4em] text-[var(--color-gold)] mb-6">
-        Douro Superior · Portugal
+        Douro Superior · Portugal chega ao Brasil
       </p>
-      <h1 class="font-serif text-5xl md:text-7xl leading-tight mb-6">
-        Bons amigos,<br />bons vinhos,<br />bons momentos
+      <h1 class="font-serif text-5xl md:text-7xl leading-tight mb-8">
+        Palato do Côa
       </h1>
-      <div class="divider-gold mx-auto"></div>
-      <p class="text-base md:text-lg text-gray-300 leading-relaxed mb-10 max-w-xl mx-auto">
-        A elegância do Douro Superior chega ao Brasil. Vinhos com alma,
-        terroir único e tradição familiar desde 2002.
+      <p class="text-base md:text-lg text-gray-300 leading-relaxed mb-4 max-w-2xl mx-auto">
+        Seis amigos apaixonados por vinho. Um sonho. Um pedaço de xisto no coração do Douro Superior.
+        Assim nasceu o Palato do Côa em 2007.
+      </p>
+      <p class="text-base md:text-lg text-gray-300 leading-relaxed mb-10 max-w-2xl mx-auto">
+        Hoje, trazemos para o Brasil vinhos feitos 100% com uvas da nossa propriedade —
+        elegantes, autênticos e cheios de alma.
+      </p>
+      <p class="font-serif text-xl text-[var(--color-gold)] italic mb-10">
+        "Bons amigos, bons vinhos, bons momentos."
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/beber" class="btn-secondary">Descubra os vinhos</a>
-        <a href="/contato" class="btn-primary border-white text-white hover:bg-white hover:text-[var(--color-dark)]">
-          Solicitar orçamento
+        <a href="/essencia" class="btn-secondary">Explorar a nossa história →</a>
+        <a href="/vinhos" class="btn-primary border-white text-white hover:bg-white hover:text-[var(--color-dark)]">
+          Ver os vinhos
         </a>
       </div>
     </div>
 
-    <!-- Scroll indicator -->
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/40 animate-bounce">
       <span class="text-[10px] uppercase tracking-widest">Explorar</span>
       <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -48,53 +51,67 @@ const schema = schemaOrganization();
     </div>
   </section>
 
-  <!-- ── PROPOSTA DE VALOR ── -->
-  <section class="py-24 px-6 max-w-7xl mx-auto">
-    <div class="text-center mb-16">
-      <p class="section-subtitle">Por que Palato do Côa</p>
-      <h2 class="section-title">Terroir único.<br />Elegância em cada garrafa.</h2>
-      <div class="divider-gold mx-auto"></div>
-    </div>
+  <!-- ── ORIGEM ── -->
+  <section class="py-24 px-6 max-w-5xl mx-auto text-center">
+    <p class="section-subtitle">A origem</p>
+    <h2 class="section-title">Um projeto nascido da amizade</h2>
+    <div class="divider-gold mx-auto"></div>
+    <p class="text-[var(--color-muted)] leading-relaxed max-w-2xl mx-auto mb-6">
+      Em 2007, Carloto Magalhães e cinco grandes amigos compraram a Quinta da Saudade, em Muxagata,
+      no Vale do Côa. Não era apenas mais um projeto de vinho — era a realização de um sonho: criar
+      vinhos de palato genuíno, feitos exclusivamente com uvas da própria propriedade.
+    </p>
+    <a href="/essencia" class="btn-primary">Conhecer a nossa história</a>
+  </section>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {[
-        {
-          icon: "🌿",
-          title: "Douro Superior",
-          text: "Vinhedo no coração do Douro Superior, berço dos grandes vinhos portugueses. Altitude, xisto e sol intenso criam vinhos de caráter inigualável.",
-        },
-        {
-          icon: "👨‍👩‍👧‍👦",
-          title: "Família & Tradição",
-          text: "Projeto familiar fundado em 2002. Cada garrafa carrega o cuidado e a paixão de uma família dedicada integralmente à viticultura de excelência.",
-        },
-        {
-          icon: "🏆",
-          title: "Reconhecimento Internacional",
-          text: "Vinhos premiados em concursos internacionais. Presença nos melhores restaurantes de Portugal e agora disponíveis para o mercado brasileiro.",
-        },
-      ].map((item) => (
-        <div class="text-center p-8 border border-[var(--color-border)] hover:border-[var(--color-gold)] transition-colors">
-          <div class="text-4xl mb-4">{item.icon}</div>
-          <h3 class="font-serif text-xl mb-3">{item.title}</h3>
-          <p class="text-sm text-[var(--color-muted)] leading-relaxed">{item.text}</p>
-        </div>
-      ))}
+  <!-- ── PROPOSTA DE VALOR ── -->
+  <section class="py-16 bg-white px-6">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="section-subtitle">Por que Palato do Côa</p>
+        <h2 class="section-title">Terroir único. Alma genuína.</h2>
+        <div class="divider-gold mx-auto"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {[
+          {
+            icon: "🌿",
+            title: "100% propriedade própria",
+            text: "Todos os vinhos são feitos exclusivamente com uvas cultivadas na Quinta da Saudade, em Muxagata. Controlo total, do xisto ao copo.",
+          },
+          {
+            icon: "🪨",
+            title: "Douro Superior",
+            text: "Altitude elevada, solo de xisto e amplitude térmica extrema. O terroir que concentra intensidade, mineralidade e elegância em cada garrafa.",
+          },
+          {
+            icon: "👨‍👩‍👧‍👦",
+            title: "Família & amigos",
+            text: "Os enólogos Carloto Magalhães e Paulo Schreck assinam cada garrafa. Um projeto de pessoas reais, com nome e história por trás.",
+          },
+        ].map((item) => (
+          <div class="text-center p-8 border border-[var(--color-border)] hover:border-[var(--color-gold)] transition-colors">
+            <div class="text-4xl mb-4">{item.icon}</div>
+            <h3 class="font-serif text-xl mb-3">{item.title}</h3>
+            <p class="text-sm text-[var(--color-muted)] leading-relaxed">{item.text}</p>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
   <!-- ── VINHOS DESTAQUE ── -->
   {featuredWines.length > 0 && (
-    <section class="py-24 bg-white px-6">
+    <section class="py-24 px-6">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-16">
           <p class="section-subtitle">Selecção Premium</p>
-          <h2 class="section-title">Vinhos em destaque</h2>
+          <h2 class="section-title">Os nossos vinhos</h2>
           <div class="divider-gold mx-auto"></div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           {featuredWines.slice(0, 3).map((wine) => (
-            <a href={`/beber/${wine.id}`} class="group border border-[var(--color-border)] p-6 hover:border-[var(--color-gold)] transition-all">
+            <a href={`/vinhos/${wine.id}`} class="group border border-[var(--color-border)] p-6 hover:border-[var(--color-gold)] transition-all bg-white">
               <p class="text-xs uppercase tracking-widest text-[var(--color-gold)] mb-2">{wine.data.type}</p>
               <h3 class="font-serif text-xl group-hover:text-[var(--color-gold)] transition-colors mb-2">{wine.data.title}</h3>
               <p class="text-sm text-[var(--color-muted)] line-clamp-3">{wine.data.description}</p>
@@ -103,26 +120,28 @@ const schema = schemaOrganization();
           ))}
         </div>
         <div class="text-center mt-10">
-          <a href="/beber" class="btn-primary">Ver todos os vinhos</a>
+          <a href="/vinhos" class="btn-primary">Ver todos os vinhos</a>
         </div>
       </div>
     </section>
   )}
 
-  <!-- ── BRASIL CTA ── -->
+  <!-- ── CTA BRASIL ── -->
   <section class="py-24 px-6 bg-[var(--color-dark)] text-white">
     <div class="max-w-3xl mx-auto text-center">
       <p class="section-subtitle text-[var(--color-gold)]">Mercado Brasileiro</p>
-      <h2 class="font-serif text-4xl md:text-5xl mb-6">Pronto para levar<br />Portugal à sua mesa?</h2>
+      <h2 class="font-serif text-4xl md:text-5xl mb-6">
+        Pronto para levar o Douro Superior à sua mesa?
+      </h2>
       <div class="divider-gold mx-auto"></div>
-      <p class="text-gray-300 leading-relaxed mb-10">
-        Atendemos restaurantes, importadoras, adegas e distribuidores em todo o Brasil.
-        Entre em contato para condições especiais de atacado e visitas à quinta.
+      <p class="text-gray-300 leading-relaxed mb-10 max-w-xl mx-auto">
+        Atendemos restaurantes, importadoras, adegas e distribuidores em todo o Brasil
+        com condições especiais de atacado e suporte completo.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/contato" class="btn-secondary">Solicitar orçamento</a>
-        <a href="/desfrutar" class="btn-primary border-white text-white hover:bg-white hover:text-[var(--color-dark)]">
-          Visitar a quinta
+        <a href="/para-o-brasil" class="btn-secondary">Saiba como funciona</a>
+        <a href="/contato" class="btn-primary border-white text-white hover:bg-white hover:text-[var(--color-dark)]">
+          Falar com nossa equipe
         </a>
       </div>
     </div>

@@ -1,0 +1,115 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { schemaBreadcrumb } from "../lib/seo";
+
+const schema = schemaBreadcrumb([
+  { name: "Início", url: "/" },
+  { name: "Para o Brasil", url: "/para-o-brasil" },
+]);
+---
+<Layout
+  title="Para o Brasil | Palato do Côa"
+  description="O Palato do Côa está disponível no Brasil para restaurantes, importadoras, adegas e distribuidores. Condições especiais de atacado e suporte completo."
+  schema={schema}
+>
+  <!-- Hero -->
+  <section class="py-20 px-6 border-b border-[var(--color-border)] text-center">
+    <p class="section-subtitle">Mercado Brasileiro</p>
+    <h1 class="section-title">Pronto para levar o Douro Superior à sua mesa?</h1>
+    <div class="divider-gold mx-auto"></div>
+  </section>
+
+  <!-- Para quem -->
+  <section class="py-16 px-6 max-w-5xl mx-auto">
+    <div class="text-center mb-12">
+      <p class="section-subtitle">Para quem é</p>
+      <h2 class="font-serif text-3xl">O Palato do Côa no Brasil</h2>
+      <div class="divider-gold mx-auto mt-4"></div>
+      <p class="text-sm text-[var(--color-muted)] max-w-xl mx-auto mt-4">
+        O Palato do Côa já está disponível no Brasil para quem quer diferenciar-se
+        com vinhos autênticos, com história e com nome por trás.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-20">
+      {[
+        {
+          icon: "🍽️",
+          title: "Restaurantes e Chefs",
+          text: "Diferenciação real na carta de vinhos. Vinhos com história, terroir único e enólogos identificados — o storytelling que os seus clientes vão lembrar.",
+        },
+        {
+          icon: "🏢",
+          title: "Importadoras e Distribuidores",
+          text: "Exclusividade e parceria de longo prazo. Trabalhamos com quem partilha a nossa visão de qualidade e autenticidade.",
+        },
+        {
+          icon: "🍾",
+          title: "Adegas e Lojas Especializadas",
+          text: "Rótulos que se vendem pela história. Fichas técnicas completas, material visual e suporte para formação da equipe.",
+        },
+        {
+          icon: "🥂",
+          title: "Enófilos e Colecionadores",
+          text: "Para quem valoriza origem, qualidade e a experiência de descobrir vinhos portugueses autênticos, directo do produtor.",
+        },
+      ].map((item) => (
+        <div class="flex gap-5 p-8 border border-[var(--color-border)] hover:border-[var(--color-gold)] transition-colors bg-white">
+          <div class="text-3xl flex-shrink-0">{item.icon}</div>
+          <div>
+            <h3 class="font-serif text-xl mb-2">{item.title}</h3>
+            <p class="text-sm text-[var(--color-muted)] leading-relaxed">{item.text}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- O que oferecemos -->
+    <div class="bg-[var(--color-dark)] text-white p-10 md:p-14 mb-20">
+      <p class="section-subtitle text-[var(--color-gold)]">O que incluímos</p>
+      <h2 class="font-serif text-3xl mb-6">Suporte completo para o seu negócio</h2>
+      <div class="divider-gold mb-8"></div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {[
+          "Condições especiais de atacado",
+          "Logística dedicada para o Brasil",
+          "Fichas técnicas completas em PT-BR",
+          "Fotos profissionais das garrafas",
+          "Treinamento de equipe (presencial ou online)",
+          "Conteúdo para redes sociais",
+          "Suporte directo com os enólogos",
+          "Visita à quinta (programa exclusivo para parceiros BR)",
+        ].map((item) => (
+          <div class="flex items-center gap-3">
+            <span class="text-[var(--color-gold)] text-lg flex-shrink-0">→</span>
+            <span class="text-sm text-gray-300">{item}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Depoimento / Social proof placeholder -->
+    <div class="border border-[var(--color-border)] p-8 text-center mb-20">
+      <p class="font-serif text-xl text-[var(--color-muted)] italic mb-4">
+        "Quer ser um dos primeiros a trazer esta história autêntica para o mercado brasileiro?"
+      </p>
+      <div class="divider-gold mx-auto"></div>
+      <p class="text-xs uppercase tracking-widest text-[var(--color-gold)] mt-4">
+        Parceiros em todo o Brasil
+      </p>
+    </div>
+
+    <!-- CTA final -->
+    <div class="text-center">
+      <p class="section-subtitle">Próximo passo</p>
+      <h2 class="font-serif text-3xl mb-4">Vamos conversar?</h2>
+      <p class="text-sm text-[var(--color-muted)] max-w-md mx-auto mb-8">
+        Estamos aqui para atender você com a mesma dedicação que colocamos em cada garrafa.
+      </p>
+      <div class="flex gap-4 justify-center flex-wrap">
+        <a href="/contato" class="btn-secondary">Fale com nossa equipe</a>
+        <a href="/vinhos" class="btn-primary">Ver os vinhos primeiro</a>
+      </div>
+    </div>
+  </section>
+</Layout>

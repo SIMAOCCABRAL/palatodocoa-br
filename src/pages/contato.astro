@@ -11,34 +11,34 @@ const schema = schemaBreadcrumb([
 
 <Layout
   title="Contato | Palato do Côa Brasil"
-  description="Entre em contato com a Palato do Côa para compras atacado, distribuição, visitas à quinta e parcerias no Brasil."
+  description="Entre em contato com o Palato do Côa para compras atacado, distribuição, visitas à quinta e parcerias no Brasil. Respondemos em até 48 horas."
   schema={schema}
 >
   <section class="py-20 px-6 border-b border-[var(--color-border)] text-center">
     <p class="section-subtitle">Fale Connosco</p>
     <h1 class="section-title">Contato Brasil</h1>
     <div class="divider-gold mx-auto"></div>
-    <p class="text-sm text-[var(--color-muted)] max-w-xl mx-auto">
-      Atendemos restaurantes, importadoras, adegas e distribuidores em todo o Brasil.
-      Resposta em até 48 horas úteis.
+    <p class="text-sm text-[var(--color-muted)] max-w-xl mx-auto leading-relaxed">
+      Estamos aqui para atender você com a mesma dedicação que colocamos em cada garrafa.
+      Respondemos em até 48 horas úteis.
     </p>
   </section>
 
   <section class="py-16 px-6 max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
-    <!-- Sidebar info -->
+    <!-- Sidebar -->
     <aside class="space-y-8">
       {[
         {
           title: "Atacado",
-          text: "Volume mínimo e condições especiais para restaurantes, adegas e distribuidores.",
+          text: "Condições especiais para restaurantes, adegas e distribuidores. Volume mínimo e logística dedicada.",
         },
         {
           title: "Visita à Quinta",
-          text: "Experiências de enoturismo no Douro Superior. Grupos e parceiros comerciais.",
+          text: "Programa exclusivo para parceiros brasileiros — visita, prova guiada e reunião comercial no Douro Superior.",
         },
         {
           title: "Distribuição",
-          text: "Procuramos parceiros de distribuição em todo o território brasileiro.",
+          text: "Procuramos parceiros exclusivos de distribuição em todo o território brasileiro.",
         },
       ].map((item) => (
         <div class="border-l-2 border-[var(--color-gold)] pl-4">
@@ -47,10 +47,14 @@ const schema = schemaBreadcrumb([
         </div>
       ))}
 
-      <div class="border-t border-[var(--color-border)] pt-6">
-        <p class="text-xs uppercase tracking-widest text-[var(--color-gold)] mb-2">Email directo</p>
-        <a href="mailto:brasil@palatodocoa.pt" class="text-sm hover:text-[var(--color-gold)] transition-colors">
+      <div class="border-t border-[var(--color-border)] pt-6 space-y-2">
+        <p class="text-xs uppercase tracking-widest text-[var(--color-gold)] mb-3">Contato directo</p>
+        <a href="mailto:brasil@palatodocoa.pt" class="block text-sm hover:text-[var(--color-gold)] transition-colors">
           brasil@palatodocoa.pt
+        </a>
+        <a href="https://www.instagram.com/palatodocoa.brasil" target="_blank" rel="noopener"
+           class="block text-sm hover:text-[var(--color-gold)] transition-colors">
+          @palatodocoa.brasil
         </a>
       </div>
     </aside>

@@ -3,93 +3,103 @@ import Layout from "../layouts/Layout.astro";
 import { schemaBreadcrumb, schemaOrganization } from "../lib/seo";
 
 const schemas = [
-  schemaBreadcrumb([{ name: "Início", url: "/" }, { name: "Essência", url: "/essencia" }]),
+  schemaBreadcrumb([{ name: "Início", url: "/" }, { name: "A Essência", url: "/essencia" }]),
   schemaOrganization(),
 ];
 ---
 <Layout
-  title="Nossa Essência | Palato do Côa"
-  description="Conheça a história, os valores e a família por trás do Palato do Côa — projeto vinícola familiar do Douro Superior desde 2002."
+  title="A Essência | Palato do Côa"
+  description="Uma história de amizade, paixão e respeito pela terra. Como seis amigos criaram o Palato do Côa em 2007 na Quinta da Saudade, Muxagata, Douro Superior."
   schema={schemas}
 >
+  <!-- Hero da página -->
   <section class="py-20 px-6 border-b border-[var(--color-border)] text-center">
-    <p class="section-subtitle">Quem Somos</p>
-    <h1 class="section-title">A Nossa Essência</h1>
+    <p class="section-subtitle">Uma história de amizade, paixão e respeito pela terra</p>
+    <h1 class="section-title">A Essência do Palato do Côa</h1>
     <div class="divider-gold mx-auto"></div>
-    <p class="text-sm text-[var(--color-muted)] max-w-xl mx-auto leading-relaxed">
-      Nascemos da convicção de que o Douro Superior tem algo único a dizer ao mundo.
-      Uma família. Um terroir. Uma obsessão: o vinho.
-    </p>
   </section>
 
-  <section class="py-16 px-6 max-w-5xl mx-auto space-y-20">
-
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+  <!-- História principal -->
+  <section class="py-16 px-6 max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-20">
       <div>
-        <p class="section-subtitle">A Origem</p>
-        <h2 class="font-serif text-3xl mb-4">Palato do Côa</h2>
+        <p class="section-subtitle">A origem</p>
+        <h2 class="font-serif text-3xl mb-4">2007 — O começo de tudo</h2>
         <div class="divider-gold"></div>
         <p class="text-[var(--color-muted)] leading-relaxed mb-4">
-          O nome é uma homenagem ao rio Côa — afluente do Douro que marca a identidade do nosso território
-          e abriga algumas das mais antigas gravuras rupestres do mundo, hoje classificadas pela UNESCO.
+          Tudo começou em 2007, quando Carloto Magalhães e cinco grandes amigos decidiram comprar
+          a <strong>Quinta da Saudade</strong>, em Muxagata, no Vale do Côa, coração do Douro Superior.
+        </p>
+        <p class="text-[var(--color-muted)] leading-relaxed mb-4">
+          Não era apenas mais um projeto de vinho. Era a realização de um sonho: criar vinhos de
+          palato genuíno, feitos exclusivamente com uvas da própria propriedade, com a elegância
+          e a personalidade que só o Douro Superior consegue entregar.
         </p>
         <p class="text-[var(--color-muted)] leading-relaxed">
-          Fundado em 2002, o projeto nasce do desejo de criar vinhos que sejam a expressão máxima
-          de um lugar único: o Douro Superior. Não vinhos para impressionar críticos, mas vinhos
-          para partilhar — com amigos, com família, com quem aprecia o que é genuíno.
+          Hoje, o projeto continua nas mãos dessa mesma família e amigos. A adega, construída em 2012
+          no centro da quinta — com formato inspirado na própria geologia da região — é o coração
+          da operação.
         </p>
       </div>
-      <div class="bg-[var(--color-border)] h-80 flex items-center justify-center text-[var(--color-muted)] text-sm">
-        <span class="text-xs uppercase tracking-widest">Foto da quinta</span>
+      <div class="bg-[var(--color-border)] h-96 flex items-center justify-center">
+        <span class="text-xs uppercase tracking-widest text-[var(--color-muted)]">quinta-vista.jpg</span>
       </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 py-12 border-t border-b border-[var(--color-border)]">
-      {[
-        { ano: "2002", facto: "Fundação do projeto vinícola no Douro Superior" },
-        { ano: "2007", facto: "Primeiras vinhas plantadas com castas autóctones" },
-        { ano: "2012", facto: "Lançamento da linha Palato do Côa" },
-        { ano: "2016", facto: "Reconhecimento internacional em concursos de vinho" },
-        { ano: "2020", facto: "Lançamento da linha Vinhas do Côa" },
-        { ano: "2026", facto: "Entrada no mercado brasileiro" },
-      ].map((item) => (
-        <div class="text-center p-4">
-          <p class="text-3xl font-serif text-[var(--color-gold)] mb-2">{item.ano}</p>
-          <p class="text-sm text-[var(--color-muted)]">{item.facto}</p>
-        </div>
-      ))}
+    <!-- Timeline -->
+    <div class="border-t border-b border-[var(--color-border)] py-12 mb-20">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        {[
+          { ano: "2007", facto: "Compra da Quinta da Saudade em Muxagata" },
+          { ano: "2012", facto: "Construção da adega no centro da quinta" },
+          { ano: "2014", facto: "Lançamento da linha Palato do Côa" },
+          { ano: "2026", facto: "Entrada no mercado brasileiro" },
+        ].map((item) => (
+          <div class="p-4">
+            <p class="text-4xl font-serif text-[var(--color-gold)] mb-2">{item.ano}</p>
+            <p class="text-sm text-[var(--color-muted)] leading-snug">{item.facto}</p>
+          </div>
+        ))}
+      </div>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-      <div class="bg-[var(--color-border)] h-80 flex items-center justify-center text-[var(--color-muted)] text-sm order-2 md:order-1">
-        <span class="text-xs uppercase tracking-widest">Foto da família</span>
+    <!-- Enólogos -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-20">
+      <div class="bg-[var(--color-border)] h-80 flex items-center justify-center order-2 md:order-1">
+        <span class="text-xs uppercase tracking-widest text-[var(--color-muted)]">familia.jpg</span>
       </div>
       <div class="order-1 md:order-2">
-        <p class="section-subtitle">Família & Valores</p>
-        <h2 class="font-serif text-3xl mb-4">Um projeto de família</h2>
+        <p class="section-subtitle">As pessoas por trás do vinho</p>
+        <h2 class="font-serif text-3xl mb-4">Trabalho honesto, nome e história</h2>
         <div class="divider-gold"></div>
         <p class="text-[var(--color-muted)] leading-relaxed mb-4">
-          O Palato do Côa é um projeto genuinamente familiar. Pais, filhos e enólogos que partilham
-          a mesma paixão e o mesmo compromisso: fazer vinhos honestos, com alma e com caráter.
+          Os enólogos <strong>Carloto Magalhães</strong> e <strong>Paulo Schreck</strong> assinam
+          cada garrafa. Pessoas reais, com conhecimento profundo do terroir e um compromisso
+          inabalável com a qualidade.
         </p>
-        <p class="text-[var(--color-muted)] leading-relaxed">
-          Os nossos valores são simples: <strong>qualidade sem concessões</strong>,
-          <strong>respeito pelo terroir</strong> e uma visão de longo prazo que privilegia
-          a excelência em cada garrafa, mesmo que isso signifique produzir menos.
+        <p class="text-[var(--color-muted)] leading-relaxed mb-4">
+          Aqui não tem atalhos. Só uvas nossas, só trabalho honesto e o desejo de entregar ao
+          Brasil o que de melhor o Douro Superior tem a oferecer.
+        </p>
+        <p class="font-serif text-lg text-[var(--color-gold)] italic mt-6">
+          "Bons amigos, bons vinhos, bons momentos."
         </p>
       </div>
     </div>
-
   </section>
 
+  <!-- CTA -->
   <section class="py-16 px-6 bg-[var(--color-dark)] text-white text-center">
-    <p class="section-subtitle text-[var(--color-gold)]">Brasil</p>
-    <h2 class="font-serif text-3xl mb-4">Agora no mercado brasileiro</h2>
+    <h2 class="font-serif text-3xl mb-4">Quer conhecer a família por trás do Palato do Côa?</h2>
     <div class="divider-gold mx-auto"></div>
-    <p class="text-gray-300 max-w-xl mx-auto mb-8">
-      Acreditamos que os vinhos do Douro Superior têm muito a oferecer ao paladar brasileiro.
-      Estamos aqui para construir esta ponte.
+    <p class="text-gray-300 max-w-lg mx-auto mb-8">
+      Estamos aqui para construir uma parceria com quem partilha a nossa paixão pelo vinho.
     </p>
-    <a href="/contato" class="btn-secondary">Falar connosco</a>
+    <div class="flex gap-4 justify-center flex-wrap">
+      <a href="/contato" class="btn-secondary">Fale com a gente no Brasil</a>
+      <a href="/terroir" class="btn-primary border-white text-white hover:bg-white hover:text-[var(--color-dark)]">
+        Descobrir o terroir →
+      </a>
+    </div>
   </section>
 </Layout>

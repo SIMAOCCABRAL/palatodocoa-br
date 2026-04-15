@@ -1,0 +1,129 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { schemaBreadcrumb } from "../lib/seo";
+
+const schema = schemaBreadcrumb([
+  { name: "Início", url: "/" },
+  { name: "O Terroir", url: "/terroir" },
+]);
+---
+<Layout
+  title="O Terroir | Palato do Côa"
+  description="Douro Superior: altitude, xisto e sol que fazem a diferença. Conheça o terroir único da Quinta da Saudade, em Muxagata, onde nascem os vinhos Palato do Côa."
+  schema={schema}
+>
+  <!-- Hero -->
+  <section class="py-20 px-6 border-b border-[var(--color-border)] text-center">
+    <p class="section-subtitle">Douro Superior: altitude, xisto e sol que fazem a diferença</p>
+    <h1 class="section-title">Um terroir que conta história</h1>
+    <div class="divider-gold mx-auto"></div>
+  </section>
+
+  <!-- Intro -->
+  <section class="py-16 px-6 max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-20">
+      <div>
+        <p class="section-subtitle">Muxagata, Vale do Côa</p>
+        <h2 class="font-serif text-3xl mb-4">O extremo leste do Douro Superior</h2>
+        <div class="divider-gold"></div>
+        <p class="text-[var(--color-muted)] leading-relaxed mb-4">
+          Localizada em Muxagata, no extremo leste do Douro Superior, a Quinta do Palato
+          beneficia-se de um terroir único — um verdadeiro "vulcão" de xisto que produz
+          vinhos com identidade forte, mas ao mesmo tempo refinados e prontos para
+          envelhecer com graça.
+        </p>
+        <p class="text-[var(--color-muted)] leading-relaxed">
+          É neste ambiente de extremos que as uvas atingem uma concentração de sabores
+          impossível de replicar em qualquer outra região do mundo.
+        </p>
+      </div>
+      <div class="bg-[var(--color-border)] h-80 flex items-center justify-center">
+        <span class="text-xs uppercase tracking-widest text-[var(--color-muted)]">quinta-terracos.jpg</span>
+      </div>
+    </div>
+
+    <!-- 4 pilares do terroir -->
+    <div class="border-t border-[var(--color-border)] pt-16 mb-20">
+      <div class="text-center mb-12">
+        <p class="section-subtitle">Os quatro pilares</p>
+        <h2 class="font-serif text-3xl">O que torna este terroir único</h2>
+        <div class="divider-gold mx-auto mt-4"></div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {[
+          {
+            icon: "⛰️",
+            title: "Altitude elevada",
+            text: "Noites frescas que preservam a acidez e a elegância natural das uvas. A altitude compensa o calor extremo dos dias de verão, dando ao vinho frescura e longevidade.",
+          },
+          {
+            icon: "🪨",
+            title: "Solo de xisto",
+            text: "Mineralidade e estrutura marcante. As raízes penetram metros de profundidade em busca de água, concentrando sabores únicos e transmitindo ao vinho a assinatura mineral do Douro Superior.",
+          },
+          {
+            icon: "☀️",
+            title: "Sol intenso",
+            text: "Maturação perfeita das uvas. A exposição solar generosa garante uvas com açúcar natural elevado e cor profunda — a base dos tintos encorpados que caracterizam a região.",
+          },
+          {
+            icon: "🌡️",
+            title: "Clima continental extremo",
+            text: "Amplitude térmica que concentra aromas e sabores. A diferença de mais de 20°C entre o dia e a noite em setembro obriga a uva a produzir mais compostos aromáticos — resultado direto: vinhos mais complexos.",
+          },
+        ].map((item) => (
+          <div class="flex gap-5 p-6 border border-[var(--color-border)] hover:border-[var(--color-gold)] transition-colors">
+            <div class="text-3xl flex-shrink-0 mt-1">{item.icon}</div>
+            <div>
+              <h3 class="font-serif text-xl mb-2">{item.title}</h3>
+              <p class="text-sm text-[var(--color-muted)] leading-relaxed">{item.text}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Imagem panorâmica -->
+    <div class="bg-[var(--color-border)] h-64 flex items-center justify-center mb-20 w-full">
+      <span class="text-xs uppercase tracking-widest text-[var(--color-muted)]">douro-paisagem.jpg</span>
+    </div>
+
+    <!-- Castas -->
+    <div class="border-t border-[var(--color-border)] pt-16">
+      <div class="text-center mb-12">
+        <p class="section-subtitle">As castas</p>
+        <h2 class="font-serif text-3xl">DNA exclusivo de Portugal</h2>
+        <div class="divider-gold mx-auto mt-4"></div>
+        <p class="text-sm text-[var(--color-muted)] max-w-xl mx-auto mt-4">
+          Trabalhamos exclusivamente com castas autóctones — variedades que não existem
+          em mais nenhum lugar do mundo com esta expressão.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { nome: "Touriga Nacional", tipo: "Tinto", desc: "A rainha das castas portuguesas. Aromas intensos de violeta e frutos negros, taninos estruturados e excepcional capacidade de envelhecimento." },
+          { nome: "Touriga Franca", tipo: "Tinto", desc: "Elegância e frescura. Complementa a potência da Touriga Nacional com acidez viva e aromas florais delicados." },
+          { nome: "Gouveio & Rabigato", tipo: "Branco", desc: "Castas brancas autóctones do Douro. Frescura cítrica, mineralidade e corpo generoso — a base dos nossos brancos elegantes." },
+        ].map((casta) => (
+          <div class="p-6 bg-white border border-[var(--color-border)]">
+            <p class="text-xs uppercase tracking-widest text-[var(--color-gold)] mb-1">{casta.tipo}</p>
+            <h3 class="font-serif text-xl mb-3">{casta.nome}</h3>
+            <p class="text-sm text-[var(--color-muted)] leading-relaxed">{casta.desc}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-16 px-6 text-center bg-white border-t border-[var(--color-border)]">
+    <h2 class="font-serif text-3xl mb-4">Sinta este terroir no copo</h2>
+    <p class="text-sm text-[var(--color-muted)] mb-8 max-w-md mx-auto">
+      Cada garrafa é a expressão directa deste lugar único.
+    </p>
+    <div class="flex gap-4 justify-center flex-wrap">
+      <a href="/vinhos" class="btn-secondary">Ver os vinhos</a>
+      <a href="/contato" class="btn-primary">Solicitar orçamento</a>
+    </div>
+  </section>
+</Layout>

@@ -21,12 +21,12 @@ const schemas = [
     type: wine.data.type,
     region: wine.data.region,
     grapes: wine.data.grapes,
-    url: `${SITE.url}/beber/${wine.id}`,
+    url: `${SITE.url}/vinhos/${wine.id}`,
     image: wine.data.image,
   }),
   schemaBreadcrumb([
     { name: "Início", url: "/" },
-    { name: "Vinhos", url: "/beber" },
+    { name: "Os Vinhos", url: "/vinhos" },
     { name: wine.data.title, url: `/beber/${wine.id}` },
   ]),
 ];
@@ -43,7 +43,7 @@ const schemas = [
     <nav class="text-xs uppercase tracking-widest text-[var(--color-muted)] mb-10">
       <a href="/" class="hover:text-[var(--color-gold)]">Início</a>
       <span class="mx-2">/</span>
-      <a href="/beber" class="hover:text-[var(--color-gold)]">Vinhos</a>
+      <a href="/vinhos" class="hover:text-[var(--color-gold)]">Vinhos</a>
       <span class="mx-2">/</span>
       <span class="text-[var(--color-dark)]">{wine.data.title}</span>
     </nav>

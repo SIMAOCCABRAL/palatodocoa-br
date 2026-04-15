@@ -4,10 +4,10 @@ line: "vinhas-do-coa"
 type: "tinto"
 region: "Douro Superior"
 grapes: ["Touriga Nacional", "Tinta Roriz", "Touriga Franca"]
-description: "A entrada acessível no universo Palato do Côa. Fresco, frutado e com caráter genuíno do Douro Superior — perfeito para o dia a dia e para descobrir Portugal pelo copo."
+description: "A porta de entrada ideal para quem quer descobrir o Douro Superior sem complicação. Frutado, fresco, versátil e com excelente relação qualidade-preço. Perfeito para o dia a dia ou para quem está começando a se apaixonar por vinhos portugueses."
 tasting_notes: "Cor rubi viva. Aromas de cereja, ameixa e toque de especiaria. Boca equilibrada, com taninos suaves e final agradável. Beber jovem."
-pairing: ["Massas com molho de carne", "Pizzas", "Hambúrgueres artesanais", "Queijos semidouros"]
+pairing: ["Massas com molho de carne", "Pizza artesanal", "Hambúrguer gourmet", "Queijos semidouros", "Churrasco casual"]
 featured: true
-seo_title: "Vinhas do Côa Tinto | Vinho Tinto Português Acessível"
-seo_description: "Vinho tinto do Douro Superior com excelente custo-benefício. Ideal para restaurantes e adegas no Brasil."
+seo_title: "Vinhas do Côa Tinto | Vinho Tinto Português para o Brasil"
+seo_description: "A porta de entrada perfeita para o Douro Superior. Frutado, fresco e com excelente custo-benefício. Para restaurantes e adegas no Brasil."
 ---

@@ -13,34 +13,40 @@ const byLine = {
 
 const schema = schemaBreadcrumb([
   { name: "Início", url: "/" },
-  { name: "Vinhos", url: "/beber" },
+  { name: "Os Vinhos", url: "/vinhos" },
 ]);
 ---
 
 <Layout
-  title="Vinhos | Palato do Côa"
-  description="Descubra os vinhos Palato do Côa e Vinhas do Côa — brancos, tintos e rosés do Douro Superior disponíveis para o mercado brasileiro."
+  title="Os Vinhos | Palato do Côa"
+  description="Catálogo completo dos vinhos Palato do Côa e Vinhas do Côa — brancos, tintos e rosés do Douro Superior, disponíveis para importação no Brasil."
   schema={schema}
 >
-  <!-- Hero -->
-  <section class="py-20 px-6 text-center border-b border-[var(--color-border)]">
-    <p class="section-subtitle">Douro Superior, Portugal</p>
+  <section class="py-20 px-6 border-b border-[var(--color-border)] text-center">
+    <p class="section-subtitle">100% uvas da propriedade · Douro Superior</p>
     <h1 class="section-title">Os nossos vinhos</h1>
     <div class="divider-gold mx-auto"></div>
-    <p class="text-sm text-[var(--color-muted)] max-w-xl mx-auto">
-      Três linhas, um terroir único. Cada vinho conta a história de uma família
-      apaixonada pelo Douro Superior.
+    <p class="text-sm text-[var(--color-muted)] max-w-xl mx-auto leading-relaxed">
+      Duas linhas, um terroir único. Cada garrafa feita exclusivamente com uvas
+      da Quinta da Saudade, em Muxagata.
     </p>
   </section>
 
-  <!-- Linhas -->
   {(Object.entries(byLine) as [string, typeof allWines][]).map(([line, wines]) => wines.length > 0 && (
     <section class="py-16 px-6 max-w-7xl mx-auto">
-      <h2 class="font-serif text-2xl mb-2">
-        {line === "palato-do-coa" ? "Palato do Côa" :
-         line === "vinhas-do-coa" ? "Vinhas do Côa" : "Edições Especiais"}
-      </h2>
-      <div class="divider-gold mb-10"></div>
+      <div class="mb-10">
+        <h2 class="font-serif text-2xl mb-1">
+          {line === "palato-do-coa" ? "Palato do Côa" :
+           line === "vinhas-do-coa" ? "Vinhas do Côa" : "Edições Especiais"}
+        </h2>
+        {line === "palato-do-coa" && (
+          <p class="text-sm text-[var(--color-muted)]">A linha de topo — elegância e personalidade plenas do Douro Superior.</p>
+        )}
+        {line === "vinhas-do-coa" && (
+          <p class="text-sm text-[var(--color-muted)]">A porta de entrada ideal para descobrir o Douro Superior com excelente relação qualidade-preço.</p>
+        )}
+        <div class="divider-gold mt-4"></div>
+      </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {wines.map((wine) => (
           <WineCard
@@ -50,20 +56,20 @@ const schema = schemaBreadcrumb([
             line={wine.data.line}
             description={wine.data.description}
             image={wine.data.image}
-            slug={wine.slug}
+            slug={wine.id}
           />
         ))}
       </div>
     </section>
   ))}
 
-  <!-- CTA -->
   <section class="py-16 px-6 text-center bg-white border-t border-[var(--color-border)]">
     <p class="section-subtitle">Compra Atacado</p>
     <h2 class="font-serif text-3xl mb-4">Interesse em distribuição?</h2>
     <p class="text-sm text-[var(--color-muted)] max-w-md mx-auto mb-8">
       Condições especiais para restaurantes, importadoras e adegas no Brasil.
+      Suporte completo com fichas técnicas, fotos e conteúdo para redes sociais.
     </p>
-    <a href="/contato" class="btn-secondary">Solicitar orçamento</a>
+    <a href="/para-o-brasil" class="btn-secondary">Saiba como funciona</a>
   </section>
 </Layout>
