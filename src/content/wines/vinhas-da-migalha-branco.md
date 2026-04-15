@@ -1,6 +1,7 @@
 ---
 title: "Vinha da Migalha Branco"
 line: "vinhas-da-migalha"
+order: 8
 type: "branco"
 region: "Douro Superior"
 grapes: ["Rabigato", "Gouveio", "Viosinho"]

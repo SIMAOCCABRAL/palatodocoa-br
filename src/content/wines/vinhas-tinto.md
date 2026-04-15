@@ -1,6 +1,7 @@
 ---
 title: "Vinhas do Côa Tinto"
 line: "vinhas-do-coa"
+order: 3
 type: "tinto"
 region: "Douro Superior"
 grapes: ["Touriga Nacional", "Tinta Roriz", "Touriga Franca"]

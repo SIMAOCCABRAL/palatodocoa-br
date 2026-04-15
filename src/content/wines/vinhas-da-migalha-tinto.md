@@ -1,6 +1,7 @@
 ---
 title: "Vinha da Migalha Tinto"
 line: "vinhas-da-migalha"
+order: 9
 type: "tinto"
 region: "Douro Superior"
 grapes: ["Touriga Nacional", "Touriga Franca", "Tinta Roriz"]

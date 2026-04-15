@@ -1,6 +1,7 @@
 ---
 title: "Palato do Côa Rosé"
 line: "palato-do-coa"
+order: 2
 type: "rose"
 region: "Douro Superior"
 grapes: ["Touriga Nacional", "Tinta Roriz"]

@@ -1,6 +1,7 @@
 ---
 title: "Palato do Côa Branco"
 line: "palato-do-coa"
+order: 1
 type: "branco"
 region: "Douro Superior"
 grapes: ["Rabigato", "Gouveio", "Viosinho"]

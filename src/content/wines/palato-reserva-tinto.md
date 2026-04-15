@@ -1,6 +1,7 @@
 ---
 title: "Palato do Côa Reserva Tinto"
 line: "palato-do-coa"
+order: 5
 type: "tinto"
 region: "Douro Superior"
 grapes: ["Touriga Nacional", "Touriga Franca", "Tinta Roriz"]

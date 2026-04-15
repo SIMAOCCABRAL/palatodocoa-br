@@ -5,10 +5,14 @@ import { getCollection } from "astro:content";
 import { schemaBreadcrumb, SITE } from "../../lib/seo";
 
 const allWines = await getCollection("wines");
+const sort = (arr: typeof allWines) => arr.sort((a, b) => a.data.order - b.data.order);
 const byLine = {
-  "palato-do-coa": allWines.filter((w) => w.data.line === "palato-do-coa"),
-  "vinhas-do-coa": allWines.filter((w) => w.data.line === "vinhas-do-coa"),
-  "edicoes-especiais": allWines.filter((w) => w.data.line === "edicoes-especiais"),
+  "palato-do-coa": sort([
+    ...allWines.filter((w) => w.data.line === "palato-do-coa"),
+    ...allWines.filter((w) => w.data.line === "vinhas-da-migalha"),
+  ]),
+  "vinhas-do-coa": sort(allWines.filter((w) => w.data.line === "vinhas-do-coa")),
+  "edicoes-especiais": sort(allWines.filter((w) => w.data.line === "edicoes-especiais")),
 };
 
 const schema = schemaBreadcrumb([

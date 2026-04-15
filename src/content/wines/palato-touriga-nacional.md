@@ -1,6 +1,7 @@
 ---
 title: "Palato do Côa Touriga Nacional"
 line: "palato-do-coa"
+order: 7
 type: "tinto"
 region: "Douro Superior"
 grapes: ["Touriga Nacional"]

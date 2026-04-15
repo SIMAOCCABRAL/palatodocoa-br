@@ -1,6 +1,7 @@
 ---
 title: "Vinhas do Côa Branco"
 line: "vinhas-do-coa"
+order: 1
 type: "branco"
 region: "Douro Superior"
 grapes: ["Gouveio", "Viosinho", "Códega do Larinho"]

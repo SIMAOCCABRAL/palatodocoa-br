@@ -7,6 +7,7 @@ const wines = defineCollection({
     title: z.string(),
     subtitle: z.string().optional(),
     line: z.enum(["palato-do-coa", "vinhas-do-coa", "vinhas-da-migalha", "edicoes-especiais"]),
+    order: z.number().default(99),
     type: z.enum(["tinto", "branco", "rose"]),
     year: z.number().optional(),
     alcohol: z.string().optional(),
