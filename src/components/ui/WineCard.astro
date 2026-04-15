@@ -25,10 +25,8 @@ const typeLabel: Record<string, string> = {
         <img
           src={image}
           alt={`Garrafa de ${typeLabel[type] || type} ${title} - Douro Superior Portugal`}
-          class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-500"
+          class="h-60 w-auto object-contain mx-auto group-hover:scale-105 transition-transform duration-500"
           loading="lazy"
-          width="600"
-          height="900"
         />
       ) : (
         <div class="flex flex-col items-center gap-2 text-[var(--color-border)]">
