@@ -79,20 +79,13 @@ const schemas = schema
 ))}
 
 <!-- Google Analytics 4 -->
-{ANALYTICS.GA4_ID && (
-  <>
-    <script
-      async
-      src={`https://www.googletagmanager.com/gtag/js?id=${ANALYTICS.GA4_ID}`}
-    ></script>
-    <script is:inline define:vars={{ GA4_ID: ANALYTICS.GA4_ID }}>
-      window.dataLayer = window.dataLayer || [];
-      window.gtag = function() { dataLayer.push(arguments); };
-      gtag("js", new Date());
-      gtag("config", GA4_ID);
-    </script>
-  </>
-)}
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C0RGNR0TWE"></script>
+<script is:inline>
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function() { dataLayer.push(arguments); };
+  gtag("js", new Date());
+  gtag("config", "G-C0RGNR0TWE");
+</script>
 
 <!-- Meta Pixel -->
 {ANALYTICS.META_PIXEL_ID && (
