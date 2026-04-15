@@ -6,7 +6,7 @@ const wines = defineCollection({
   schema: z.object({
     title: z.string(),
     subtitle: z.string().optional(),
-    line: z.enum(["palato-do-coa", "vinhas-do-coa", "edicoes-especiais"]),
+    line: z.enum(["palato-do-coa", "vinhas-do-coa", "vinhas-da-migalha", "edicoes-especiais"]),
     type: z.enum(["tinto", "branco", "rose"]),
     year: z.number().optional(),
     alcohol: z.string().optional(),
